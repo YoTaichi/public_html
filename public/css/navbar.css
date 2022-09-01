@@ -1,0 +1,19 @@
+.instand {
+    float: auto;
+}
+
+;
+.bgcol {
+    background-color: azure;
+}
+
+.ellipsis2 {
+    overflow: hidden;
+    display: -webkit-box;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 2;
+    /*行數*/
+    -webkit-box-orient: vertical;
+    white-space: normal;
+    word-break: break-all
+}
