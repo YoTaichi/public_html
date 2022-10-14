@@ -36,6 +36,7 @@
                         </a>
                     </div>
                 </div>
+
                 <form action="{{ route('articles.update', $article) }}" method="post">
                     @csrf
                     @method('patch')

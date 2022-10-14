@@ -18,11 +18,11 @@ class ArticleModel extends Model
     }
     
     public function article_tag () {
-        return $this->hasMany('App\Models\ArticleTagModel','articles_id');
+        return $this->hasMany('App\Models\ArticleTagModel','article_id');
     }
 
     public function message () {
-        return $this->hasMany('App\Models\MessageModel','articles_id');
+        return $this->hasMany('App\Models\MessageModel','article_id');
     }
 
     public function good () {
@@ -31,6 +31,10 @@ class ArticleModel extends Model
 
     public function bad () {
         return $this->hasMany('App\Models\BadModel','article_id');
+    }
+    
+    public function blacklist () {
+        return $this->hasMany('App\Models\BlackListModel');
     }
 
 }

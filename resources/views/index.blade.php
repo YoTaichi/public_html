@@ -23,9 +23,7 @@
             <div class="col-lg-1">bloc 1/3</div>
             <!--中間切版-->
             <div class="col-lg-9 p-0">
-                <div id="container" class="container p-0">
-
-                
+                <div id="container" class="container p-0">   
                 </div>
             </div>
             <!--右邊切版-->

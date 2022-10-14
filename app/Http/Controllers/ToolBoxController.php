@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\ArticleModel;
+use App\Models\ArticleTagModel;
 use Illuminate\Http\File;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -46,10 +47,47 @@ class ToolBoxController extends Controller
                 }
             }
         }
-        //dd($requestData);
-        ArticleModel::create($requestData);
+        /* 存article , 抓新文章ID */
+        $id = ArticleModel::create($requestData)->id;
+        /* 切割#tag */
+        $addtags = explode(' ', request('tag'));
+        /* 陣列第一個數是空白 unset移除第一個數 */
+        /* unset($addtags[0]); */
+        /* 存tag */
+        foreach ($addtags as $addtag) {    
+            ArticleTagModel::create([
+                'tag' => $addtag,
+                'article_id' => $id
+            ]);
+        }
+
         return redirect()->route('articles.index');
     }
+
+    public function update(Request $request, $id)
+    {
+        $article = auth()->user()->articles->find($id);
+        $tag_delete = ArticleTagModel::where('article_id' , $id)->delete();
+        
+        $content = $request->validate([
+            'title' => 'required',
+            'detail' => 'required',
+        ]);
+
+        $tag = $request->validate([
+            'tag' => 'required',
+        ]);
+
+        /* $article_tag->update($tag); */
+
+        $article->update($content);
+        return redirect()->route('articles.index');
+    }
+
+
+
+
+
     // 別人的輪子
     private function replace_first_str($search_str, $replacement_str, $src_str)
     {
@@ -70,11 +108,11 @@ class ToolBoxController extends Controller
 
         $decoder = new Base64ImageDecoder($base64, ['jpeg', 'jpg', 'png', 'gif']);
         $filename = strtoupper(Str::uuid()) . "." . $decoder->getFormat();
-        $path = '/' .$dir . '/' . $filename;
+        $path = '/' . $dir . '/' . $filename;
         Storage::put($filename, $decoder->getDecodedContent());
-        Storage::move('/'. $filename,'/public/'. $filename);
-        
-        
+        Storage::move('/' . $filename, '/public/' . $filename);
+
+
         //回傳 資料庫儲存用的路徑格式
         return $path;
     }

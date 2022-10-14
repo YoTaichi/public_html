@@ -8,13 +8,14 @@ use Illuminate\Http\Request;
 class MessageController extends Controller
 {
     public function store(Request $request) {
+
         $content = $request->validate([
 
             'message' => 'required',
-            'articles_id' => 'required'
+            'article_id' => 'required'
 
         ]);
-        Auth()->user()->messages()->create($content);
+        Auth()->user()->message()->create($content);
         return redirect()->back();
     }
 

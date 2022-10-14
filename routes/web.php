@@ -19,16 +19,24 @@ use Illuminate\Support\Facades\Route;
 Route::resource('articles', 'App\Http\Controllers\ArticlesController'::class);
 Route::resource('register', 'App\Http\Controllers\RegisterController'::class);
 Route::resource('message', 'App\Http\Controllers\MessageController'::class);
+Route::resource('blacklist', 'App\Http\Controllers\BlackListController'::class);
 Route::resource('search', 'App\Http\Controllers\SearchController'::class)->only('store');
 Route::get('/', function () { 
     return view('welcome');
 });
 Route::get('/search/{id}', ['App\Http\Controllers\SearchController'::class, 'find'])->name('search.find');
-Route::get('/bad/{id}', ['App\Http\Controllers\ArticlesController'::class, 'bad'])->name('articles.bad');
+/* 讚、倒讚 */
 Route::get('/good/{id}', ['App\Http\Controllers\GoodController'::class, 'good'])->name('good');
 Route::get('/bad/{id}', ['App\Http\Controllers\BadController'::class, 'bad'])->name('bad');
+/* 文章顯示 */
+Route::get('/sex_all', ['App\Http\Controllers\ArticlesController'::class, 'sex_all'])->name('articles.sex_all');
+Route::get('/sex_only', ['App\Http\Controllers\ArticlesController'::class, 'sex_only'])->name('articles.sex_only');
+Route::get('/sex_no', ['App\Http\Controllers\ArticlesController'::class, 'sex_no'])->name('articles.sex_no');
+Route::post('/blacklist', ['App\Http\Controllers\BlackListController'::class, 'blacklist'])->name('blacklist');
+Route::post('/blacklist_del/{id}', ['App\Http\Controllers\BlackListController'::class, 'blacklist_del'])->name('blacklist.blacklist_del');
+/* Route::post('/store', ['App\Http\Controllers\ToolBoxController'::class, 'store'])->name('toolbox.store'); */
 
-Route::post('/store', ['App\Http\Controllers\ToolBoxController'::class, 'store'])->name('toolbox.store');
+
 Route::prefix('admin')->middleware('auth')->group(function ()
 {
    // ...前略 

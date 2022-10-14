@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light modal-header--sticky" style="background-color: #604765;">
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #604765;">
   <div class="container-fluid ">
     <div class="col-auto">
       <!-- LOGO -->
@@ -8,19 +8,20 @@
     </div>
     <!-- 登出按鈕 -->
     <form method="POST" action="{{ route('logout') }}">
-                            @csrf
-                            <x-dropdown-link :href="route('logout')" onclick="event.preventDefault();
+      @csrf
+      <x-dropdown-link :href="route('logout')" onclick="event.preventDefault();
                                                 this.closest('form').submit();">
-                                {{ __('Log Out') }}
-                            </x-dropdown-link>
-                        </form>
-
+        {{ __('Log Out') }}
+      </x-dropdown-link>
+    </form>
+        <!-- 錢 -->
     <div class="col " id="money">
       <div class="row justify-content-star">
         <div class="col-lg-auto pe-0 text-light">
           <img src="/img/money2.png" alt="" style="height:20px;">
           {{ Auth::user()->money }}
         </div>
+        <!-- 鑽 -->
         <div class="col-lg-auto text-light">
           <img src="/img/gem2.png" alt="" style="height:20px;">
           {{ Auth::user()->diamond }}
@@ -36,12 +37,12 @@
       <ul class="navbar-nav mb-2 ms-auto mb-lg-0">
         <!-- id -->
         <li class="nav-item">
-        <a class="nav-link text-light" href="#">{{ Auth::user()->name }}</a>
+          <a class="nav-link text-light" href="#">{{ Auth::user()->name }}</a>
         </li>
         <li class="nav-item">
-          <!-- 彈出我的最愛 -->
-          <a class="nav-link active text-light" aria-current="page" href="#" data-bs-toggle="modal" data-bs-target="#favorite">最愛</a>
-          @include("nav/favorite")
+          <!-- 彈出黑名單 -->
+          <a class="nav-link active text-light" aria-current="page"  href="#blacklist" data-bs-toggle="modal">黑名單</a>
+          @include('nav.blacklist')
         </li>
 
         <li class="nav-item">
@@ -53,7 +54,7 @@
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             <li><a class="dropdown-item" href="#">Action</a></li>
-            
+
             <li><a class="dropdown-item" href="#">Another action</a></li>
             <li>
               <hr class="dropdown-divider">
@@ -62,13 +63,13 @@
           </ul>
         </li>
         <li class="nav-item">
-        <a class="nav-link text-light" href="{{ route('articles.create') }}">發文</a>
+          <a class="nav-link text-light" href="{{ route('articles.create') }}">發文</a>
         </li>
         <li class="nav-item">
         </li>
       </ul>
       <form action="{{ route('search.store') }}" class="d-flex" method="POST">
-      @csrf
+        @csrf
         <input class="form-control me-2" name="search" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success" type="submit">Search</button>
       </form>
