@@ -15,7 +15,12 @@ class BadModel extends Model
         return $this->belongsTo('App\Models\User');
     }
 
-    public function Article() {
+    public function article() {
         return $this->belongsTo('App\Models\ArticleModel');
     }
+
+    public function article_floor() {
+        return $this->belongsTo('App\Models\ArticleFloorModel');
+    }
+    
 }

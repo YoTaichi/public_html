@@ -1,4 +1,5 @@
 @foreach($articles as $article)
+
 <a href="{{ route('articles.show',$article) }}" class="p-0 border-0 mb-1" type="button" style=" text-decoration:none; background-color:transparent; color:black;">
   <!--卡片-->
   <div class="card" style="border-radius:7px; ">

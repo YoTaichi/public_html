@@ -12,7 +12,7 @@
     @yield('head')
 </head>
 
-<body style="background-image:url(/img/background6.png); background-size:auto; background-repeat:round;">
+<body style="background-image:url(/img/background.png) ; background-size:auto; background-repeat:round;">
 
     @yield('content')
     

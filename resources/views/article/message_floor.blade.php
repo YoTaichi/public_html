@@ -1,6 +1,6 @@
            
            <div class="row g-2 mt-0">
-           @foreach($article->message as $message)
+           @foreach($article_floor->message as $message)
                 <div class="row px-0 mx-0">
                     <div class="col-auto p-0 mx-2"><img src="/img/head.svg" class="img-fluid " alt="..."></div>
                     <div class="col ps-1 pe-0">
@@ -20,13 +20,15 @@
             @endforeach
                 <!-- 輸入留言 -->
                 <form action="{{ route('message.store') }}" class="mt-0" method="post">
+                    
                     <div class="row ">
                         @csrf
                         <input type="hidden" name="article_id" value="{{ $article->id }}">
+                        <input type="hidden" name="floor" value="{{ $article_floor->floor }}">
+                        <input type="hidden" name="article_floor_id" value="{{ $article_floor->id }}">
                         <div class="col">
                             <input type="text" name="message" class="form-control" placeholder="留言">
                         </div>
-
                         <div class="col-auto ps-0">
                             <div class="actions">
                                 <input type="submit" class="btn btn-primary mx-3">
@@ -34,4 +36,5 @@
                         </div>
                     </div>
                 </form>
+
             </div>

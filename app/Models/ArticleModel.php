@@ -11,7 +11,7 @@ class ArticleModel extends Model
     use softDeletes;
 
     protected $table = 'article';
-    protected $fillable = ['title', 'detail' ,'sex','good','good', 'tag','image' , 'updated_at', 'created_at', 'user_id' ];
+    protected $fillable = ['title', 'detail', 'sex', 'floor', 'good', 'bad', 'tag', 'image', 'updated_at', 'created_at', 'user_id' ];
 
     public function user() {
         return $this->belongsTo('App\Models\User');
@@ -19,6 +19,10 @@ class ArticleModel extends Model
     
     public function article_tag () {
         return $this->hasMany('App\Models\ArticleTagModel','article_id');
+    }
+
+    public function article_floor () {
+        return $this->hasMany('App\Models\ArticleFloorModel','article_id');
     }
 
     public function message () {
@@ -37,4 +41,7 @@ class ArticleModel extends Model
         return $this->hasMany('App\Models\BlackListModel');
     }
 
+    public function Article() {
+        return $this->belongsTo('App\Models\ArticleModel');
+    }
 }

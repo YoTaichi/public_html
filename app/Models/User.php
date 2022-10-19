@@ -46,6 +46,9 @@ class User extends Authenticatable
     public function articles () {
         return $this->hasMany('App\Models\ArticleModel');
     }
+    public function article_floor () {
+        return $this->hasMany('App\Models\ArticleFloorModel');
+    }
 
     public function message () {
         return $this->hasMany('App\Models\MessageModel');

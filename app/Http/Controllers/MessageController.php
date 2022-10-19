@@ -12,8 +12,9 @@ class MessageController extends Controller
         $content = $request->validate([
 
             'message' => 'required',
-            'article_id' => 'required'
-
+            'article_id' => 'required',
+            'article_floor_id' =>'required',
+            'floor' => 'required'
         ]);
         Auth()->user()->message()->create($content);
         return redirect()->back();

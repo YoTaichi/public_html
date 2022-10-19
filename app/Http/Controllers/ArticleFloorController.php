@@ -22,83 +22,13 @@ use Melihovv\Base64ImageDecoder\Base64ImageDecoder;
 use Illuminate\Support\Str;
 use Psy\Readline\Hoa\Console;
 
-class ArticlesController extends Controller
+class ArticleFloorController extends Controller
 {
-    public function __consrtruct()
-    {
-        $this->middleware('auth')->except('index');
-    }
-
-    public function index()
-    {
-        /* sex_sex  =0顯示普通  =1顯示瑟瑟  =2全部顯示 */
-        $sex_set = Auth()->user()->sex_set;
-        $blacklists = BlackListModel::where('user_id', Auth()->user()->id)->get();
-
-        /* desc 新的先 */
-        if ($sex_set === 0) {
-            
-            $articles = ArticleModel::orderBy('id', 'desc')
-            ->whereHas('article_tag', function($q){
-                $blacklists = BlackListModel::where('user_id', Auth()->user()->id)->get();
-                for ($i=0; $i < $blacklists->count(); $i++) { 
-                    $q->where('tag', '<>', $blacklists[$i]->blacklist);
-                }   
-            })
-            ->where('sex', 0)
-            ->get();
-        } elseif ($sex_set === 1) {
-            $articles = ArticleModel::orderBy('id', 'desc')
-            ->whereHas('article_tag', function($q){
-                $blacklists = BlackListModel::where('user_id', Auth()->user()->id)->get();
-                for ($i=0; $i < $blacklists->count(); $i++) { 
-                    $q->where('tag', '<>', $blacklists[$i]->blacklist);
-                }   
-            })
-            ->where('sex', 1)
-            ->get();
-        } else {
-            $articles = ArticleModel::orderBy('id', 'desc')
-            ->whereHas('article_tag', function($q){
-                $blacklists = BlackListModel::where('user_id', Auth()->user()->id)->get();
-                for ($i=0; $i < $blacklists->count(); $i++) { 
-                    $q->where('tag', '<>', $blacklists[$i]->blacklist);
-                }   
-            })
-            ->get();
-        }
-
-        return view('app', ['articles' => $articles, 'blacklists' => $blacklists, 'sex_set' => $sex_set]);
-    }
-
-    public function show($id)
-    {
-        $article = ArticleModel::with(array('message'=>function($query){
-            $query->where('floor','1')->get();
-        }))
-        ->find($id);
-
-        $article_floors = ArticleFloorModel::orderBy('id', 'ASC')
-        ->where('article_id' , $id)
-        ->with('message')
-        ->get();
-
-        $article_tag = ArticleModel::with('article_tag')->find($id);
-        $blacklists = BlackListModel::where('user_id', Auth()->user()->id)->get();
-        return view('article.show', ['article' => $article, 'article_tag' => $article_tag,'article_floors' => $article_floors,'floor' => count($article_floors)+2, 'blacklists' => $blacklists])->with('blacklists', $blacklists);
-    }
-
-    public function create()
-    {
-        $blacklists = BlackListModel::where('user_id', Auth()->user()->id)->get();
-        return view('nav.Po', ['blacklists' => $blacklists]);
-    }
-
     public function store(Request $request)
     {
 
         $requestData = $request->all();
-
+ 
         if ($request->hasFile('img')) {
             $file = $request->file('img');
             $path = Storage::disk('myfile')->putFile('news', $file);
@@ -127,29 +57,18 @@ class ArticlesController extends Controller
             }
         }
         /* 存article , 抓新文章ID */
-        $id = ArticleModel::create($requestData)->id;
-        /* 切割#tag */
-        $addtags = explode(' ', request('tag'));
-        /* 陣列第一個數是空白 unset移除第一個數 */
-        /* unset($addtags[0]); */
-        /* 存tag */
-        foreach ($addtags as $addtag) {
-            ArticleTagModel::create([
-                'tag' => $addtag,
-                'article_id' => $id
-            ]);
-        }
+        ArticleFloorModel::create($requestData);
 
-        return redirect()->route('articles.index');
+        return redirect()->back();
     }
 
     public function edit($id)
     {
         $article = auth()->user()->articles->find($id);
+        $article_floor = 
         $blacklists = BlackListModel::where('user_id', Auth()->user()->id)->get();
-        return view('article.edit', ['article' => $article, 'blacklists' => $blacklists]);
+        return view('article.edit_floor', ['article' => $article, 'blacklists' => $blacklists]);
     }
-
 
     public function update(Request $request, $id)
     {
@@ -201,46 +120,6 @@ class ArticlesController extends Controller
         return redirect()->route('articles.show',['article' => $article]);
     }
 
-    
-
-
-
-    public function destroy($id)
-    {
-        $article = auth()->user()->articles->find($id);
-        $article->delete();
-
-        return redirect()->route('articles.index');
-    }
-    /* 顯示全部 */
-    public function sex_all()
-    {
-        $id = auth()->user()->id;
-        DB::table('users')
-            ->where('id', 1)
-            ->update(['sex_set' => 2]);
-        return redirect()->route('articles.index');
-    }
-
-    /* 顯示瑟瑟 */
-    public function sex_only()
-    {
-        $id = auth()->user()->id;
-        DB::table('users')
-            ->where('id', 1)
-            ->update(['sex_set' => 1]);
-        return redirect()->route('articles.index');
-    }
-
-    /* 顯示普通 */
-    public function sex_no()
-    {
-        $id = auth()->user()->id;
-        DB::table('users')
-            ->where('id', 1)
-            ->update(['sex_set' => 0]);
-        return redirect()->route('articles.index');
-    }
 
     /* 上傳圖片轉檔 */
     private function replace_first_str($search_str, $replacement_str, $src_str)
@@ -271,4 +150,3 @@ class ArticlesController extends Controller
         return $path;
     }
 }
-
