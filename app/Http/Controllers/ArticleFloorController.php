@@ -28,7 +28,7 @@ class ArticleFloorController extends Controller
     {
 
         $requestData = $request->all();
- 
+
         if ($request->hasFile('img')) {
             $file = $request->file('img');
             $path = Storage::disk('myfile')->putFile('news', $file);
@@ -64,22 +64,23 @@ class ArticleFloorController extends Controller
 
     public function edit($id)
     {
-        $article = auth()->user()->articles->find($id);
-        $article_floor = 
-        $blacklists = BlackListModel::where('user_id', Auth()->user()->id)->get();
 
+        $article = auth()->user()->articles->find($id);
+        $article_floor =
+        $blacklists = BlackListModel::where('user_id', Auth()->user()->id)->get();
+        dd($article);
         $data = [
-            'article' => $article, 
+            'article' => $article,
             'blacklists' => $blacklists
         ];
-        return view('article.edit_floor',['data' => $data]);
+        return view('article.edit_floor', ['data' => $data]);
     }
 
     public function update(Request $request, $id)
     {
         $article = auth()->user()->articles->find($id);
         $tag_delete = ArticleTagModel::where('article_id', $id)->delete();
-
+        dd( $article);
         $requestData = $request->all();
 
         if ($request->hasFile('img')) {
@@ -122,7 +123,10 @@ class ArticleFloorController extends Controller
         }
 
         $article->update($requestData);
-        return redirect()->route('articles.show',['article' => $article]);
+        $data = [
+            'article' => $article
+        ];
+        return redirect()->route('articles.show',  ['data' => $data]);
     }
 
 

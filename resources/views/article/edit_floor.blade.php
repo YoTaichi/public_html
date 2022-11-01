@@ -25,8 +25,7 @@
                         </a>
                     </div>
                 </div>
-
-                <form action="{{ route('article_floor.update', $article) }}" method="post">
+                <form action="{{ route('article_floor.update', $data['article']) }}" method="post">
                     @csrf
                     @method('patch')
                     <!-- 標題 -->

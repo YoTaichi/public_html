@@ -182,7 +182,7 @@ class ArticlesController extends Controller
     {
         $article = auth()->user()->articles->find($id);
         $blacklists = BlackListModel::where('user_id', Auth()->user()->id)->get();
-
+dd($article);
         $data = [
             'article' => $article,
             'blacklists' => $blacklists
