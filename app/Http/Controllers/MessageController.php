@@ -9,15 +9,10 @@ class MessageController extends Controller
 {
     public function store(Request $request) {
 
-        $content = $request->validate([
-
-            'message' => 'required',
-            'article_id' => 'required',
-            'article_floor_id' =>'required',
-            'floor' => 'required'
-        ]);
-        Auth()->user()->message()->create($content);
+        $requestData = $request->all();
+        Auth()->user()->message()->create($requestData);
         return redirect()->back();
+      
     }
 
    /*  public function show() {

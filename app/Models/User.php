@@ -70,4 +70,7 @@ class User extends Authenticatable
         return $this->hasMany('App\Models\BlackListModel');
     }
 
+    public function sign_in () {
+        return $this->hasMany('App\Models\SignInModel');
+    }
 }

@@ -1,4 +1,4 @@
-@foreach($articles as $article)
+@foreach($data['articles'] as $article)
 
 <a href="{{ route('articles.show',$article) }}" class="p-0 border-0 mb-1" type="button" style=" text-decoration:none; background-color:transparent; color:black;">
   <!--卡片-->
@@ -14,6 +14,7 @@
       <!--右邊文字-->
       <div class=" col ps-2 pb-2">
         <!-- 標題 -->
+    
         <div class="row m-0">
           <h2 class=" ellipsis2 text-start pt-2 px-0"> {{ $article->title }}</h2>
         </div>
@@ -21,9 +22,10 @@
           {{ $article->tag }}
         </div>
         <!-- 內容 -->
-        <div class="row ellipsis2 text-black-50 fw-light mx-0" style="max-width:550px; min-height: 10px;max-height: 100%;">
+        <div class="row ellipsis2 text-black-50 fw-light mx-0" style="max-height: 300px;">
           {!! $article->detail !!}
         </div>
+
         <div class=" mx-0 pt-1 d-flex align-items-center">
           <!-- 讚 -->
           <img class="me-2" src="img/Good.png">

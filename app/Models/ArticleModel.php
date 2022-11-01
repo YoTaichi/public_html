@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\softDeletes;
 
 class ArticleModel extends Model
 {   
+    
     use softDeletes;
 
     protected $table = 'article';

@@ -23,7 +23,7 @@
                     
                     <div class="row ">
                         @csrf
-                        <input type="hidden" name="article_id" value="{{ $article->id }}">
+                        <input type="hidden" name="article_id" value="{{ $data['article']->id }}">
                         <input type="hidden" name="floor" value="{{ $article_floor->floor }}">
                         <input type="hidden" name="article_floor_id" value="{{ $article_floor->id }}">
                         <div class="col">

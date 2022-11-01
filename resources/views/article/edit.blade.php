@@ -2,8 +2,7 @@
 
 @section('head')
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.20/dist/summernote-lite.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.20/dist/summernote-lite.min.js"></script>
+<link rel="stylesheet" href="/css/navbar.css">
 @stop
 @section('content')
 @include('nav/navbar')
@@ -20,7 +19,7 @@
                     </div>
                     <div class="col-auto">
                         <div>
-                            <form action="{{ route('articles.destroy', $article) }}" method="POST">
+                            <form action="{{ route('articles.destroy', $data['article']) }}" method="POST">
                                 @method('delete')
                                 @csrf
                                 <input class="btn btn-danger" type="submit" value="刪除">
@@ -37,22 +36,22 @@
                     </div>
                 </div>
 
-                <form action="{{ route('articles.update', $article) }}" method="post">
+                <form action="{{ route('articles.update', $data['article']) }}" method="post">
                     @csrf
                     @method('patch')
                     <!-- 標題 -->
                     <div class="form-group mb-3">
-                        <input type="" value="{{ $article->title }}" name="title" class="form-control form-control-lg shadow-sm" id="" placeholder="請輸入標題...">
+                        <input type="" value="{{ $data['article']->title }}" name="title" class="form-control form-control-lg shadow-sm" id="" placeholder="請輸入標題...">
                     </div>
                     <!-- 副標 -->
                     <div class="form-group mb-3 ">
-                        <input type="" value="{{ $article->tag }}" name="tag" class="form-control form-control-lg shadow-sm" id="" placeholder="使用 # 設置副標籤...">
+                        <input type="" value="{{ $data['article']->tag }}" name="tag" class="form-control form-control-lg shadow-sm" id="" placeholder="使用 # 設置副標籤...">
                     </div>
                     <!-- 18X -->
-                    <input type="checkbox" value="{{ $article->sex }}" name="sex" class="btn-check" value="1" id="btn-check-outlined" autocomplete="off">
+                    <input type="checkbox" value="{{  $data['article']->sex }}" name="sex" class="btn-check" value="1" id="btn-check-outlined" autocomplete="off">
                     <label class="btn btn-outline-danger mb-2" for="btn-check-outlined">18X</label><br>
                     <!-- 編輯 -->
-                    <textarea id="summernote" name="detail">{{ $article->detail }}</textarea>
+                    <textarea id="summernote" name="detail">{{ $data['article']->detail }}</textarea>
                     <!-- 存image位置 -->
                     <input type="hidden" name="image">
                     <!-- 按鈕 -->

@@ -13,7 +13,6 @@ class GoodController extends Controller
 {
     public function good($id)
     {
-
         /* 找user_id跟article_id  */
         $find = GoodModel::where('user_id','=',auth()->user()->id)->
                             where('article_id','=',$id);

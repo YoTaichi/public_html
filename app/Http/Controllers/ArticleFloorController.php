@@ -67,7 +67,12 @@ class ArticleFloorController extends Controller
         $article = auth()->user()->articles->find($id);
         $article_floor = 
         $blacklists = BlackListModel::where('user_id', Auth()->user()->id)->get();
-        return view('article.edit_floor', ['article' => $article, 'blacklists' => $blacklists]);
+
+        $data = [
+            'article' => $article, 
+            'blacklists' => $blacklists
+        ];
+        return view('article.edit_floor',['data' => $data]);
     }
 
     public function update(Request $request, $id)

@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::resource('articles', 'App\Http\Controllers\ArticlesController'::class);
 Route::resource('article_floor', 'App\Http\Controllers\ArticleFloorController'::class);
+Route::resource('game', 'App\Http\Controllers\GameController'::class);
 Route::resource('register', 'App\Http\Controllers\RegisterController'::class);
 Route::resource('message', 'App\Http\Controllers\MessageController'::class);
 Route::resource('blacklist', 'App\Http\Controllers\BlackListController'::class);
@@ -33,6 +34,7 @@ Route::get('/bad/{id}', ['App\Http\Controllers\BadController'::class, 'bad'])->n
 Route::get('/sex_all', ['App\Http\Controllers\ArticlesController'::class, 'sex_all'])->name('articles.sex_all');
 Route::get('/sex_only', ['App\Http\Controllers\ArticlesController'::class, 'sex_only'])->name('articles.sex_only');
 Route::get('/sex_no', ['App\Http\Controllers\ArticlesController'::class, 'sex_no'])->name('articles.sex_no');
+Route::get('/sign_in', ['App\Http\Controllers\ArticlesController'::class, 'sign_in'])->name('articles.sign_in');
 Route::post('/blacklist', ['App\Http\Controllers\BlackListController'::class, 'blacklist'])->name('blacklist');
 Route::post('/blacklist_del/{id}', ['App\Http\Controllers\BlackListController'::class, 'blacklist_del'])->name('blacklist.blacklist_del');
 /* Route::post('/store', ['App\Http\Controllers\ToolBoxController'::class, 'store'])->name('toolbox.store'); */

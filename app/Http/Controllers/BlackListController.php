@@ -11,7 +11,10 @@ class BlackListController extends Controller
 {
     public function index(){
         $blacklists = BlackListModel::where('user_id' , Auth()->user()->id )->get();
-        return view('nav.blacklist', ['blacklists' => $blacklists]);
+        $data = [
+            'blacklists' => $blacklists
+        ];
+        return view('nav.blacklist', ['data' => $data]);
     }
 
     public function blacklist(Request $request) {

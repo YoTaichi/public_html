@@ -7,6 +7,16 @@
     background-color: azure;
 }
 
+.navbg {
+    background: #141E30;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #243B55, #141E30);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #243B55, #141E30);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    /* background-color: #604765;" */
+}
+
 .ellipsis2 {
     overflow: hidden;
     display: -webkit-box;
@@ -16,4 +26,46 @@
     -webkit-box-orient: vertical;
     white-space: normal;
     word-break: break-all
+}
+
+iframe {
+    max-width: 100%;
+}
+
+img {
+    max-width: 100%;
+}
+
+.sign_in_color {
+    background: #0F2027;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to top, #2C5364, #203A43, #0F2027);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to top, #2C5364, #203A43, #0F2027);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.sign_in_opacity {
+    opacity: .7;
+}
+
+.sign_in_nonopacity {
+    opacity: 1;
+}
+
+.sign_in_background_color {
+    background: #232526;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to top, #414345, #232526);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to top, #414345, #232526);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.sign_in_mark {
+    background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);
+}
+
+.walkhidden {
+    visibility: hidden;
 }

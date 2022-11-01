@@ -16,7 +16,7 @@
     </form>
     <!-- 顯示+刪除黑名單 -->
     <div class="mx-3 d-flex flex-row">
-      @foreach($blacklists as $blacklist)
+      @foreach($data['blacklists'] as $blacklist)
       <form action="{{ route('blacklist.blacklist_del',$blacklist) }}" method="post">
         @csrf
         <div class="btn-group me-2" role="group" aria-label="Basic example">
