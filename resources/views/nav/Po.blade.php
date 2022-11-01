@@ -1,11 +1,5 @@
 @extends('template')
-
-@section('head')
-@stop
 @section('content')
-@include('nav/navbar')
-
-
 <div class="body">
     <div class="col-0 col-lg-2 d-inline-flex"></div>
     <div class="col-12 col-lg-7 pt-3 px-0 d-inline-flex">

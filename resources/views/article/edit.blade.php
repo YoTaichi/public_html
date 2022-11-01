@@ -5,7 +5,6 @@
 <link rel="stylesheet" href="/css/navbar.css">
 @stop
 @section('content')
-@include('nav/navbar')
 
 <body style="background-image:url(/img/background6.png); background-size:auto; background-repeat:round;">
     <div class="body">

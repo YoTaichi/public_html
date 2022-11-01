@@ -1,7 +1,7 @@
 @extends('template')
 @section('content')
 <!--NavBar-->
-@include('nav/navbar')
+
 
 
 <!--內容-->
@@ -11,15 +11,15 @@
         <div class="col-lg-1">bloc 1/3</div>
         <!--中間切版-->
         <div class="col-lg-9 p-0">
-
             @include('article/article')
         </div>
+        <!--右邊切版-->
+        <div class="col-lg-2">bloc 3/3</div>
+        <!-- 簽到 -->
+        @include('sign_in.first_day')
     </div>
-    <!--右邊切版-->
-    <div class="col-lg-2">bloc 3/3</div>
-    @include('sign_in.first_day')
 </div>
-</div>
+
 <!-- 懸浮裘依 -->
 <div class="btn-group dropstart ">
     <!-- 本體 -->

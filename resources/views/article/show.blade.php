@@ -1,12 +1,5 @@
 @extends('template')
-@section('head')
-<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
-<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.20/dist/summernote-lite.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.20/dist/summernote-lite.min.js"></script>
-<link rel="stylesheet" href="/css/navbar.css">
-@stop
 @section('content')
-@include('nav/navbar')
 <div class=" border-0 mt-2 p-2">
   <div class="row px-0 ">
     <div class="col-lg-2"></div>
