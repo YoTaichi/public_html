@@ -122,7 +122,11 @@ class ArticlesController extends Controller
     public function create()
     {
         $blacklists = BlackListModel::where('user_id', Auth()->user()->id)->get();
-        return view('nav.Po', ['blacklists' => $blacklists]);
+
+        $data = [
+            'blacklists' => $blacklists
+        ];
+        return view('nav.Po', ['data' => $data]);
     }
 
     public function store(Request $request)

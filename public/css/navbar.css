@@ -69,3 +69,10 @@ img {
 .walkhidden {
     visibility: hidden;
 }
+
+.message {
+    word-break: break-all;
+    background-color: #604765;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+}

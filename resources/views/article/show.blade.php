@@ -1,6 +1,6 @@
 @extends('template')
 @section('head')
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.20/dist/summernote-lite.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.20/dist/summernote-lite.min.js"></script>
 <link rel="stylesheet" href="/css/navbar.css">
@@ -48,9 +48,9 @@
 
         </div>
         <!-- 內容 -->
-          <div class="body pb-4" style="word-break: break-all;">
-            {!! $data['article']->detail !!}
-          </div>
+        <div class="body pb-4" style="word-break: break-all;">
+          {!! $data['article']->detail !!}
+        </div>
         <!-- 讚 -->
         <div class="row">
           <div class="col mx-0 d-flex align-items-center pb-3">
@@ -77,7 +77,7 @@
 
       </div>
       <!-- 留言 -->
-      <div class="footer px-3 py-2 rounded-botton " style="word-break: break-all; background-color: #604765; border-bottom-right-radius:3px; border-bottom-left-radius:3px;">
+      <div class="footer px-3 py-2 rounded-botton message ">
         @include('article/message')
       </div>
 
@@ -130,7 +130,7 @@
 
       </div>
       <!-- 留言 -->
-      <div class="footer px-3 py-2 rounded-botton " style="word-break: break-all; background-color: #604765; border-bottom-right-radius:3px; border-bottom-left-radius:3px;">
+      <div class="footer px-3 py-2 rounded-botton message">
         @include('article/message_floor')
       </div>
 

@@ -52,7 +52,7 @@
 </div>
 
 
-<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+
 <!-- 登入畫面 -->
 
 
@@ -64,7 +64,6 @@
 @if($yesorno === 1){
 <!-- 換日自動開啟登入 -->
 <input class="" id="sigin_datecount" type="hidden" value="{{'day'. $data['datecount'] +1}}">
-<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
 <script>
     $(function() {
         var datecount = document.getElementById("sigin_datecount").value;
@@ -88,12 +87,11 @@
         var dateelement = document.getElementById(datecount);
         dateelement.classList.remove('walkhidden');
         /* 背景黯淡 */
-
-            var out = document.getElementById("out").value;
-            var count = document.getElementById("count").value;
-            var aaa = out + count
-            var outelement = document.getElementById(aaa);
-            outelement.classList.add('sign_in_nonopacity');
+        var out = document.getElementById("out").value;
+        var count = document.getElementById("count").value;
+        var aaa = out + count
+        var outelement = document.getElementById(aaa);
+        outelement.classList.add('sign_in_nonopacity');
 
     });
 </script>
