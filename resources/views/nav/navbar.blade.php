@@ -7,14 +7,7 @@
       </a>
     </div>
     <!-- 登出按鈕 -->
-    <form method="POST" action="{{ route('logout') }}">
-      @csrf
-      <x-dropdown-link :href="route('logout')" onclick="event.preventDefault();
-                                                this.closest('form').submit();">
-        {{ __('Log Out') }}
-      </x-dropdown-link>
-    </form>
-        <!-- 錢 -->
+    <!-- 錢 -->
     <div class="col " id="money">
       <div class="row justify-content-star">
         <div class="col-lg-auto pe-0 text-light">
@@ -33,6 +26,7 @@
         <span class="navbar-toggler-icon"></span>
       </button>
     </div>
+    
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mb-2 ms-auto mb-lg-0">
         <!-- id -->
@@ -41,26 +35,12 @@
         </li>
         <li class="nav-item">
           <!-- 彈出黑名單 -->
-          <a class="nav-link active text-light" aria-current="page"  href="#blacklist" data-bs-toggle="modal">黑名單</a>
+          <a class="nav-link active text-light" aria-current="page" href="#blacklist" data-bs-toggle="modal">黑名單</a>
           @include('nav.blacklist')
         </li>
 
         <li class="nav-item">
           <a class="nav-link text-light" href="{{ route('game.index') }}">遊戲</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
         </li>
         <li class="nav-item">
           <a class="nav-link text-light" href="{{ route('articles.create') }}">發文</a>

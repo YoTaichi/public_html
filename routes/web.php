@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Route;
 Route::resource('articles', 'App\Http\Controllers\ArticlesController'::class);
 Route::resource('article_floor', 'App\Http\Controllers\ArticleFloorController'::class);
 Route::resource('game', 'App\Http\Controllers\GameController'::class);
+Route::resource('ball', 'App\Http\Controllers\BallController'::class);
 Route::resource('register', 'App\Http\Controllers\RegisterController'::class);
 Route::resource('message', 'App\Http\Controllers\MessageController'::class);
 Route::resource('blacklist', 'App\Http\Controllers\BlackListController'::class);

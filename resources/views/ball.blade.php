@@ -7,25 +7,62 @@
 <!--內容-->
 <div class="container-fluid mt-3">
     <div class="row">
-        <!--左邊切版-->
-        <div class="col-lg-1"></div>
         <!--中間切版-->
         <div class="col-lg-9 p-0">
-            @include('article/article') 
-            
+            <!-- 懸浮裘依 -->
+            <div class=" btn-group dropstart ">
+                <!-- 本體 -->
+                <button type="button" class="btn" data-bs-toggle="dropdown" aria-expanded="false" style="
+            width: 220px;height: auto;position: fixed;
+            bottom: -10rem;right: 0.5rem;box-shadow:none;">
+                    <img src="/img/Ball2.png" class="img-fluid" alt="...">
+                </button>
+                <ul class="dropdown-menu list-group-flush">
+                    <!-- 簽到 -->
+                    <li><a class="dropdown-item" id="test">早安</a></li>
+                    <li>
+                        <a class="dropdown-item" id="gg" aria-current="page" data-bs-target="#sign_in" data-bs-toggle="modal">123</a>
+                    </li>
+                    <!-- 瑟瑟選擇 -->
+                    @if($data['sex_set'] === 0)
+                    <li><a class="dropdown-item" href="{{ route('articles.sex_all') }}">全部</a></li>
+                    <li><a class="dropdown-item" href="{{ route('articles.sex_only')}}">我要瑟瑟</a></li>
+                    <li><a class="dropdown-item active" href="{{ route('articles.sex_no') }}">一般</a></li>
+                    @elseif($data['sex_set'] === 1)
+                    <li><a class="dropdown-item" href="{{ route('articles.sex_all') }}">全部</a></li>
+                    <li><a class="dropdown-item active" href="{{ route('articles.sex_only')}}">我要瑟瑟</a></li>
+                    <li><a class="dropdown-item" href="{{ route('articles.sex_no') }}">一般</a></li>
+                    @else
+                    <li><a class="dropdown-item active" href="{{ route('articles.sex_all') }}">全部</a></li>
+                    <li><a class="dropdown-item" href="{{ route('articles.sex_only')}}">我要瑟瑟</a></li>
+                    <li><a class="dropdown-item" href="{{ route('articles.sex_no') }}">一般</a></li>
+                    @endif
+                    <!-- 登出 -->
+                    <li>
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+                            <x-dropdown-link :href="route('logout')" onclick="event.preventDefault();
+                                                this.closest('form').submit();">
+                                {{ __('Log Out') }}
+                            </x-dropdown-link>
+                        </form>
+                    </li>
+                </ul>
+
+            </div>
+
         </div>
-        <!--右邊切版-->
-        <div class="col-lg-2"></div>
+
         <!-- 簽到 -->
         @include('sign_in.first_day')
     </div>
 </div>
-<!-- 底部 -->
-<nav class="navigation fixed-bottom d-block d-sm-none" >
+
+<nav class=" navigation fixed-bottom d-block d-sm-none">
     <ul class="navigation__list">
 
         <li class="navigation__item">
-            <a class="navigation__link active" href="#home">
+            <a class="navigation__link active" href="{{ route('articles.index') }}">
                 <i class="navigation__icon" data-feather="home"></i>
                 <span class="navigation__text">HOME</span>
             </a>
@@ -47,47 +84,7 @@
 </nav>
 
 
-<!-- 懸浮裘依 -->
-<div class=" btn-group dropstart d-none d-sm-block">
-    <!-- 本體 -->
-    <button type="button" class="btn" data-bs-toggle="dropdown" aria-expanded="false" style="
-            width: 220px;height: auto;position: fixed;
-            bottom: -30rem;right: 0.5rem;box-shadow:none;">
-        <img src="/img/Ball2.png" class="img-fluid" alt="...">
-    </button>
-    <ul class="dropdown-menu list-group-flush">
-        <!-- 簽到 -->
-        <li><a class="dropdown-item" id="test">早安</a></li>
-        <li>
-            <a class="dropdown-item" id="gg" aria-current="page" data-bs-target="#sign_in" data-bs-toggle="modal">123</a>
-        </li>
-        <!-- 瑟瑟選擇 -->
-        @if($data['sex_set'] === 0)
-        <li><a class="dropdown-item" href="{{ route('articles.sex_all') }}">全部</a></li>
-        <li><a class="dropdown-item" href="{{ route('articles.sex_only')}}">我要瑟瑟</a></li>
-        <li><a class="dropdown-item active" href="{{ route('articles.sex_no') }}">一般</a></li>
-        @elseif($data['sex_set'] === 1)
-        <li><a class="dropdown-item" href="{{ route('articles.sex_all') }}">全部</a></li>
-        <li><a class="dropdown-item active" href="{{ route('articles.sex_only')}}">我要瑟瑟</a></li>
-        <li><a class="dropdown-item" href="{{ route('articles.sex_no') }}">一般</a></li>
-        @else
-        <li><a class="dropdown-item active" href="{{ route('articles.sex_all') }}">全部</a></li>
-        <li><a class="dropdown-item" href="{{ route('articles.sex_only')}}">我要瑟瑟</a></li>
-        <li><a class="dropdown-item" href="{{ route('articles.sex_no') }}">一般</a></li>
-        @endif
-        <!-- 登出 -->
-        <li>
-            <form method="POST" action="{{ route('logout') }}">
-                @csrf
-                <x-dropdown-link :href="route('logout')" onclick="event.preventDefault();
-                                                this.closest('form').submit();">
-                    {{ __('Log Out') }}
-                </x-dropdown-link>
-            </form>
-        </li>
-    </ul>
 
-</div>
 
 
 

@@ -73,4 +73,9 @@ class User extends Authenticatable
     public function sign_in () {
         return $this->hasMany('App\Models\SignInModel');
     }
+
+    public function lr_game () {
+        return $this->hasMany('App\Models\LeftRightGameModel');
+    }
+
 }

@@ -1,14 +1,14 @@
-@foreach($articles as $article)
+@foreach($data['articles'] as $article)
 <!-- 找ID: route('search.find',$article)  這是找其他欄位article_id -->
-<a href="{{ route('search.find',['id' => $article->article_id ] ) }}" class="p-0 border-0 mb-1" type="button" style="text-decoration:none; background-color:transparent; color:black;">
+<a href="{{ route('articles.show',$article->article_id) }}" class="p-0 border-0 mb-1" type="button" style="text-decoration:none; background-color:transparent; color:black;">
     <!--卡片-->
     <div class="card" style="border-radius:7px; ">
         <div class="row g-0">
             <!--左邊圖片-->
             <!--d-flex align-items-center 垂直對齊右邊-->
-            <div class="col-md-2 py-1 col-12 p-1 d-flex align-items-center">
+            <div class="col-md-2 py-1 col-12 p-1 d-flex align-items-center" ">
                 <div class="">
-                    <img src="img/rushia-3.svg" class="img-fluid" alt="...">
+                    <img src="img/rushia-3.svg" class=" " alt="..." style="height: 20px;">
                 </div>
             </div>
             <!--右邊文字-->

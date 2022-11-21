@@ -14,20 +14,20 @@ class BadController extends Controller
     public function bad($id)
     {
         /* 找user_id跟article_id  */
-        $find = BadModel::where('user_id','=',auth()->user()->id)->
-                                where('article_id','=',$id);
-
+        $find = BadModel::where('user_id', '=', auth()->user()->id)->where('article_id', '=', $id);
+        $article_user = ArticleModel::find($id)->user_id;
         /* 用get()沒值回傳empty */
-        if($find->get()->isEmpty()){
+        if ($article_user <> auth()->user()->id) {
+            if ($find->get()->isEmpty()) {
                 BadModel::create([
                     'user_id' => auth()->user()->id,
                     'article_id' => $id
                 ]);
-        }else{
-            $find->delete();
+            } else {
+                $find->delete();
+            }
         }
-
+        
         return redirect()->back();
     }
-
 }

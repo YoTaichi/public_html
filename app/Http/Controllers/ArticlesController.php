@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use PhpParser\Builder\FunctionLike;
 use Carbon\Carbon;
+use Illuminate\Pagination\Paginator;
 /* 上船處理圖片用 */
 use Illuminate\Http\File;
 use Illuminate\Support\Facades\Storage;
@@ -47,7 +48,7 @@ class ArticlesController extends Controller
                     }
                 })
                 ->where('sex', 0)
-                ->get();
+                ->paginate(15);
         } elseif ($sex_set === 1) {
             $articles = ArticleModel::orderBy('id', 'desc')
                 ->whereHas('article_tag', function ($q) {
@@ -57,7 +58,7 @@ class ArticlesController extends Controller
                     }
                 })
                 ->where('sex', 1)
-                ->get();
+                ->paginate(15);
         } else {
             $articles = ArticleModel::orderBy('id', 'desc')
                 ->whereHas('article_tag', function ($q) {
@@ -66,7 +67,7 @@ class ArticlesController extends Controller
                         $q->where('tag', '<>', $blacklists[$i]->blacklist);
                     }
                 })
-                ->get();
+                ->paginate(15);
         }
 
         $yesterday = SignInModel::find(Auth()->user()->id);
@@ -182,7 +183,6 @@ class ArticlesController extends Controller
     {
         $article = auth()->user()->articles->find($id);
         $blacklists = BlackListModel::where('user_id', Auth()->user()->id)->get();
-dd($article);
         $data = [
             'article' => $article,
             'blacklists' => $blacklists
@@ -197,7 +197,6 @@ dd($article);
         $tag_delete = ArticleTagModel::where('article_id', $id)->delete();
 
         $requestData = $request->all();
-
         if ($request->hasFile('img')) {
             $file = $request->file('img');
             $path = Storage::disk('myfile')->putFile('news', $file);

@@ -65,10 +65,8 @@ class ArticleFloorController extends Controller
     public function edit($id)
     {
 
-        $article = auth()->user()->articles->find($id);
-        $article_floor =
+        $article = auth()->user()->article_floor->find($id);
         $blacklists = BlackListModel::where('user_id', Auth()->user()->id)->get();
-        dd($article);
         $data = [
             'article' => $article,
             'blacklists' => $blacklists
@@ -78,11 +76,9 @@ class ArticleFloorController extends Controller
 
     public function update(Request $request, $id)
     {
-        $article = auth()->user()->articles->find($id);
+        $article = auth()->user()->article_floor->find($id);
         $tag_delete = ArticleTagModel::where('article_id', $id)->delete();
-        dd( $article);
         $requestData = $request->all();
-
         if ($request->hasFile('img')) {
             $file = $request->file('img');
             $path = Storage::disk('myfile')->putFile('news', $file);
@@ -124,9 +120,9 @@ class ArticleFloorController extends Controller
 
         $article->update($requestData);
         $data = [
-            'article' => $article
+            'article' => $article->article_id
         ];
-        return redirect()->route('articles.show',  ['data' => $data]);
+        return redirect()->route('articles.show',  ['article' => $article->article_id]);
     }
 
 

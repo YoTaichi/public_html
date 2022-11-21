@@ -1,11 +1,5 @@
 @extends('template')
-
-@section('head')
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-<link rel="stylesheet" href="/css/navbar.css">
-@stop
 @section('content')
-
 <body style="background-image:url(/img/background6.png); background-size:auto; background-repeat:round;">
     <div class="body">
         <div class="col-0 col-lg-2 d-inline-flex"></div>
@@ -34,7 +28,6 @@
                         </a>
                     </div>
                 </div>
-
                 <form action="{{ route('articles.update', $data['article']) }}" method="post">
                     @csrf
                     @method('patch')
@@ -46,8 +39,13 @@
                     <div class="form-group mb-3 ">
                         <input type="" value="{{ $data['article']->tag }}" name="tag" class="form-control form-control-lg shadow-sm" id="" placeholder="使用 # 設置副標籤...">
                     </div>
+                    <input type="hidden" name="sex" class="btn-check" value="0" id="not18" autocomplete="off">
                     <!-- 18X -->
-                    <input type="checkbox" value="{{  $data['article']->sex }}" name="sex" class="btn-check" value="1" id="btn-check-outlined" autocomplete="off">
+                    @if($data['article']->sex === 1)
+                    <input checked type="checkbox" name="sex" class="btn-check" value="1" id="btn-check-outlined" autocomplete="off">
+                    @else
+                    <input type="checkbox" name="sex" class="btn-check" value="1" id="btn-check-outlined" autocomplete="off">
+                    @endif
                     <label class="btn btn-outline-danger mb-2" for="btn-check-outlined">18X</label><br>
                     <!-- 編輯 -->
                     <textarea id="summernote" name="detail">{{ $data['article']->detail }}</textarea>

@@ -2,7 +2,6 @@
 @section('content')
 
     <!--NavBar-->
-    @include('nav/navbar')
     <!--內容-->
     <div class="container-fluid mt-3">
         <div class="row">
