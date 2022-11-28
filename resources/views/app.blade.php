@@ -11,7 +11,7 @@
         <div class="col-lg-1"></div>
         <!--中間切版-->
         <div class="col-lg-8 p-0">
-            @include('article/article') 
+            @include('article/article')
         </div>
         <!--右邊切版-->
         <div class="col-lg-2"></div>
@@ -20,7 +20,7 @@
     </div>
 </div>
 <!-- 底部 -->
-<nav class="navigation fixed-bottom d-block d-sm-none" >
+<nav class="navigation fixed-bottom d-block d-sm-none">
     <ul class="navigation__list">
 
         <li class="navigation__item">
@@ -57,6 +57,7 @@
     <ul class="dropdown-menu list-group-flush">
         <!-- 簽到 -->
         <li><a class="dropdown-item" id="test">早安</a></li>
+        <li><a class="dropdown-item" href="{{ route('profile.edit') }}">修改資料</a></li>
         <li>
             <a class="dropdown-item" id="gg" aria-current="page" data-bs-target="#sign_in" data-bs-toggle="modal">123</a>
         </li>

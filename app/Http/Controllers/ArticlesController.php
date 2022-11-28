@@ -35,8 +35,6 @@ class ArticlesController extends Controller
     public function index()
     {
         /* sex_sex  =0顯示普通  =1顯示瑟瑟  =2全部顯示 */
-        $sex_set = Auth()->user()->sex_set;
-        $blacklists = BlackListModel::where('user_id', Auth()->user()->id)->get();
         /* desc 新的先 */
         if ($sex_set === 0) {
             $articles = ArticleModel::orderBy('id', 'desc')
@@ -79,7 +77,6 @@ class ArticlesController extends Controller
         $yesupdate = $yesterday->updated_at;
         $datecount = $yesterday->count;
 
-        
 
 
 
@@ -98,6 +95,7 @@ class ArticlesController extends Controller
             return view('app', ['data' => $data, 'yesorno' => 0]);
         } else {
             /* 簽到 */
+            
             /* 簽到count+1 */
             $yesterday->increment('count');
             /* 登入獎勵 */
