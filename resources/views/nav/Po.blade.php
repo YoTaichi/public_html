@@ -46,9 +46,10 @@
             </form>
         </div>
     </div>
+    <div class="col col-lg-2"></div>
 </div>
-<div class="col col-lg-2"></div>
-</div>
+
+
 
 
 <!-- Summernote JS - CDN Link -->
@@ -68,6 +69,27 @@
                 ['insert', ['link', 'picture', 'video']],
                 ['view', ['codeview', 'help']]
             ],
+            popover: {
+                image: [
+                    ['image', ['resizeFull', 'resizeHalf', 'resizeQuarter']],
+                    ['float', ['floatLeft', 'floatRight', 'floatNone']],
+                    ['remove', ['removeMedia']]
+                ],
+                link: [
+                    ['link', ['linkDialogShow', 'unlink']]
+                ],
+                table: [
+                    ['add', ['addRowDown', 'addRowUp', 'addColLeft', 'addColRight']],
+                    ['delete', ['deleteRow', 'deleteCol', 'deleteTable']],
+                ],
+                air: [
+                    ['color', ['color']],
+                    ['font', ['bold', 'underline', 'clear']],
+                    ['para', ['ul', 'paragraph']],
+                    ['table', ['table']],
+                    ['insert', ['link', 'picture']]
+                ]
+            },
             callbacks: {
                 // 刪掉上傳圖片 直接至後端做處理
                 onMediaDelete: function(element) {

@@ -7,15 +7,17 @@ use Illuminate\Http\Request;
 
 class MessageController extends Controller
 {
-    public function store(Request $request) {
+    public function store(Request $request)
+    {
 
-        $requestData = $request->all();
-        Auth()->user()->message()->create($requestData);
-        return redirect()->back();
-      
+    
+            $requestData = $request->all();
+            Auth()->user()->message()->create($requestData);
+            return redirect()->back();
+     
     }
 
-   /*  public function show() {
+    /*  public function show() {
         return view()
 
     } */

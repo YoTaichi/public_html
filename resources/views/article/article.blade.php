@@ -3,22 +3,22 @@
 <a href="{{ route('articles.show',$article) }}" class="p-0 border-0 mb-1 d-flex flex-column" type="button" style="border-radius:7px; text-decoration:none; background-color:transparent; color:black;">
   <!--卡片-->
   <div class="card " style="border-radius:7px; ">
-    <div class="row  g-0">
+    <div class="row g-0">
       <!--左邊圖片-->
       <!--d-flex align-items-center 垂直對齊右邊-->
-      <div class="col-md-1 col-12  d-flex justify-content-center mx-auto d-block">
-        <div class="row mt-1">
-          <!-- 讚 -->
+      <div class="col-md-1 col-12  d-flex justify-content-center d-block " >
+        <div class="row mt-2 px-3">
           <div class="col-auto mx-auto">
-            <div class=" text-black-50 ms-2"><img class="me-2" src="img/Good.png"> {{ $article->good()->count() }}</div>
-          </div>
-          <div class="col-auto mx-auto">
-            <div class=" text-black-50 ms-2"><img class="me-2" src="img/Bad.png"> {{ $article->bad()->count() }}</div>
-          </div>
-          <!-- 留言 -->
-          <div class="col-auto mx-auto d-flex align-items-end text-muted">
             {{ $article->user->name }}
           </div>
+          <!-- 讚 -->
+          <div class="col-auto mx-auto">
+            <div class=" text-black-50 ms-2"><img class="" src="img/thumbs-up.svg"> {{ $article->good()->count() }}</div>
+          </div>
+          <div class="col-auto mx-auto">
+            <div class=" text-black-50 ms-2"><img class="" src="img/thumbs-down.svg"> {{ $article->bad()->count() }}</div>
+          </div>
+          <!-- 留言 -->
         </div>
         <!-- <img src="img/rushia-2.svg" class="img-fluid " alt="..." style="height:200px ;"> -->
       </div>
@@ -44,6 +44,6 @@
 <div>
 </div>
 <div class="col d-flex justify-content-center mb-5">
-{!! $data['articles']->withQueryString()->links('pagination::bootstrap-5') !!}
+  {!! $data['articles']->withQueryString()->links('pagination::bootstrap-5') !!}
 </div>
 <div class="col "></div>

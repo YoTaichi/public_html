@@ -27,7 +27,7 @@
             <input type="hidden" name="floor" value="{{ $article_floor->floor }}">
             <input type="hidden" name="article_floor_id" value="{{ $article_floor->id }}">
             <div class="col">
-                <input type="text" name="message" class="form-control" placeholder="留言">
+                <input id="message" type="text" name="message" class="form-control" placeholder="留言">
             </div>
             <div class="col-auto ps-0">
                 <div class="actions">

@@ -10,9 +10,8 @@
         <!--左邊切版-->
         <div class="col-lg-1"></div>
         <!--中間切版-->
-        <div class="col-lg-9 p-0">
+        <div class="col-lg-8 p-0">
             @include('article/article') 
-            
         </div>
         <!--右邊切版-->
         <div class="col-lg-2"></div>

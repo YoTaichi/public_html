@@ -39,7 +39,6 @@ class ArticlesController extends Controller
         $blacklists = BlackListModel::where('user_id', Auth()->user()->id)->get();
         /* desc 新的先 */
         if ($sex_set === 0) {
-
             $articles = ArticleModel::orderBy('id', 'desc')
                 ->whereHas('article_tag', function ($q) {
                     $blacklists = BlackListModel::where('user_id', Auth()->user()->id)->get();
@@ -69,26 +68,59 @@ class ArticlesController extends Controller
                 })
                 ->paginate(15);
         }
+        /* 首次簽到 */
+        SignInModel::firstOrCreate([
+            'user_id' => Auth()->user()->id
+        ]);
+        $user = Auth()->user()->id;
 
-        $yesterday = SignInModel::find(Auth()->user()->id);
+        /* 計算是否簽到 */
+        $yesterday = SignInModel::find($user);
         $yesupdate = $yesterday->updated_at;
         $datecount = $yesterday->count;
+
         
+
+
+
         $data = [
-        'articles' => $articles,
-        'blacklists' => $blacklists, 
-        'sex_set' => $sex_set, 
-        'datecount' => $datecount
-           ];
- 
+            'articles' => $articles,
+            'blacklists' => $blacklists,
+            'sex_set' => $sex_set,
+            'datecount' => $datecount
+        ];
+
+
+
         $user = User::find(1);
         if (now()->dayOfYear - $yesupdate->dayOfYear === 0) {
             /* 簽過 */
             return view('app', ['data' => $data, 'yesorno' => 0]);
-        }else{
+        } else {
             /* 簽到 */
             /* 簽到count+1 */
             $yesterday->increment('count');
+            /* 登入獎勵 */
+            if ($datecount % 30 === 1) {
+                user::find($user)->increment('money', 10);
+            } elseif ($datecount % 30 === 2) {
+                user::find($user)->increment('money', 10);
+            } elseif ($datecount % 30 === 3) {
+                user::find($user)->increment('money', 15);
+            } elseif ($datecount % 30 === 4) {
+                user::find($user)->increment('money', 15);
+            } elseif ($datecount % 30 === 5) {
+                user::find($user)->increment('money', 20);
+            } elseif ($datecount % 30 === 6) {
+                user::find($user)->increment('money', 20);
+            } elseif ($datecount % 30 === 7) {
+                user::find($user)->increment('money', 30);
+            } elseif ($datecount % 30 === 0) {
+                user::find($user)->increment('money', 1000);
+            } else {
+                user::find($user)->increment('money', 30);
+            }
+
             return view('app', ['data' => $data, 'yesorno' => 1]);
         }
     }
@@ -110,12 +142,12 @@ class ArticlesController extends Controller
         $blacklists = BlackListModel::where('user_id', Auth()->user()->id)->get();
 
         $data = [
-        'article' => $article, 
-        'article_tag' => $article_tag, 
-        'article_floors' => $article_floors, 
-        'floor' => count($article_floors) + 2, 
-        'blacklists' => $blacklists
-               ];
+            'article' => $article,
+            'article_tag' => $article_tag,
+            'article_floors' => $article_floors,
+            'floor' => count($article_floors) + 2,
+            'blacklists' => $blacklists
+        ];
 
         return view('article.show', ['data' => $data]);
     }
