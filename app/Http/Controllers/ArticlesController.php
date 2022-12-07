@@ -32,8 +32,18 @@ class ArticlesController extends Controller
         $this->middleware('auth')->except('index');
     }
 
+    // function ball()
+    // {
+    //     parent::ball();
+    //     echo $this->sex_set;
+    //     echo $this->blacklists;
+    // }
+
+
     public function index()
     {
+        $sex_set = Auth()->user()->sex_set;
+        $blacklists = BlackListModel::where('user_id', Auth()->user()->id)->get();
         /* sex_sex  =0顯示普通  =1顯示瑟瑟  =2全部顯示 */
         /* desc 新的先 */
         if ($sex_set === 0) {
@@ -83,13 +93,14 @@ class ArticlesController extends Controller
         $data = [
             'articles' => $articles,
             'blacklists' => $blacklists,
-            'sex_set' => $sex_set,
+            'sex_set' =>$sex_set,
             'datecount' => $datecount
         ];
 
 
 
-        $user = User::find(1);
+        $user = auth()->user();
+ 
         if (now()->dayOfYear - $yesupdate->dayOfYear === 0) {
             /* 簽過 */
             return view('app', ['data' => $data, 'yesorno' => 0]);
@@ -100,23 +111,23 @@ class ArticlesController extends Controller
             $yesterday->increment('count');
             /* 登入獎勵 */
             if ($datecount % 30 === 1) {
-                user::find($user)->increment('money', 10);
+                $user->increment('money', 10);
             } elseif ($datecount % 30 === 2) {
-                user::find($user)->increment('money', 10);
+                $user->increment('money', 10);
             } elseif ($datecount % 30 === 3) {
-                user::find($user)->increment('money', 15);
+                $user->increment('money', 15);
             } elseif ($datecount % 30 === 4) {
-                user::find($user)->increment('money', 15);
+                $user->increment('money', 15);
             } elseif ($datecount % 30 === 5) {
-                user::find($user)->increment('money', 20);
+                $user->increment('money', 20);
             } elseif ($datecount % 30 === 6) {
-                user::find($user)->increment('money', 20);
+                $user->increment('money', 20);
             } elseif ($datecount % 30 === 7) {
-                user::find($user)->increment('money', 30);
+                $user->increment('money', 30);
             } elseif ($datecount % 30 === 0) {
-                user::find($user)->increment('money', 1000);
+                $user->increment('money', 1000);
             } else {
-                user::find($user)->increment('money', 30);
+                $user->increment('money', 30);
             }
 
             return view('app', ['data' => $data, 'yesorno' => 1]);

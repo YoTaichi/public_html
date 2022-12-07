@@ -27,6 +27,9 @@ Route::resource('search', 'App\Http\Controllers\SearchController'::class)->only(
 Route::get('/', function () { 
     return view('welcome');
 });
+Route::get('/buygem', ['App\Http\Controllers\BuyController'::class, 'gem'])->name('buy.gem');
+Route::get('/buygem/get', ['App\Http\Controllers\BuyController'::class, 'get_paid'])->name('buy.get_paid');
+Route::get('/buymoney', ['App\Http\Controllers\BuyController'::class, 'money'])->name('buy.money');
 Route::get('/search/{id}', ['App\Http\Controllers\SearchController'::class, 'find'])->name('search.find');
 /* 讚、倒讚 */
 Route::get('/good/{id}', ['App\Http\Controllers\GoodController'::class, 'good'])->name('good');

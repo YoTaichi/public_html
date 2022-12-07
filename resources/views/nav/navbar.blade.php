@@ -13,11 +13,13 @@
         <div class="col-lg-auto pe-0 text-light">
           <img src="/img/money2.png" alt="" style="height:20px;">
           {{ Auth::user()->money }}
+          <a href="{{ route('buy.money') }}"><img src="/img/plus-circle.svg" alt=""  ></a>
         </div>
         <!-- 鑽 -->
         <div class="col-lg-auto text-light">
           <img src="/img/gem2.png" alt="" style="height:20px;">
           {{ Auth::user()->diamond }}
+          <a href="{{ route('buy.gem') }}"><img src="/img/plus-circle.svg" alt=""  ></a>
         </div>
       </div>
     </div>
