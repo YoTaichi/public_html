@@ -4,12 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\softDeletes;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class ArticleModel extends Model
 {   
     
-    use softDeletes;
+    use SoftDeletes;
 
     protected $table = 'article';
     protected $fillable = ['title', 'detail', 'sex', 'floor', 'good', 'bad', 'tag', 'image', 'updated_at', 'created_at', 'user_id' ];

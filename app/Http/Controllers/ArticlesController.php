@@ -46,6 +46,7 @@ class ArticlesController extends Controller
         $blacklists = BlackListModel::where('user_id', Auth()->user()->id)->get();
         /* sex_sex  =0顯示普通  =1顯示瑟瑟  =2全部顯示 */
         /* desc 新的先 */
+        $OnePage = 15;
         if ($sex_set === 0) {
             $articles = ArticleModel::orderBy('id', 'desc')
                 ->whereHas('article_tag', function ($q) {
@@ -55,7 +56,7 @@ class ArticlesController extends Controller
                     }
                 })
                 ->where('sex', 0)
-                ->paginate(15);
+                ->paginate($OnePage);
         } elseif ($sex_set === 1) {
             $articles = ArticleModel::orderBy('id', 'desc')
                 ->whereHas('article_tag', function ($q) {
@@ -65,7 +66,7 @@ class ArticlesController extends Controller
                     }
                 })
                 ->where('sex', 1)
-                ->paginate(15);
+                ->paginate($OnePage);
         } else {
             $articles = ArticleModel::orderBy('id', 'desc')
                 ->whereHas('article_tag', function ($q) {
@@ -74,39 +75,35 @@ class ArticlesController extends Controller
                         $q->where('tag', '<>', $blacklists[$i]->blacklist);
                     }
                 })
-                ->paginate(15);
+                ->paginate($OnePage);
         }
+
+
+        $user = Auth()->user();
         /* 首次簽到 */
         SignInModel::firstOrCreate([
             'user_id' => Auth()->user()->id
         ]);
-        $user = Auth()->user()->id;
-
         /* 計算是否簽到 */
-        $yesterday = SignInModel::find($user);
+        $yesterday = SignInModel::find($user->id);
         $yesupdate = $yesterday->updated_at;
         $datecount = $yesterday->count;
-
-
-
 
         $data = [
             'articles' => $articles,
             'blacklists' => $blacklists,
-            'sex_set' =>$sex_set,
+            'sex_set' => $sex_set,
             'datecount' => $datecount
         ];
 
+        if ($yesupdate->equalTo($yesterday->created_at)) {
+            $yesterday->touch();
+            $user->increment('money', 5);
+            return view('app', ['data' => $data, 'yesorno' => 1]);
+        }
 
-
-        $user = auth()->user();
- 
-        if (now()->dayOfYear - $yesupdate->dayOfYear === 0) {
-            /* 簽過 */
-            return view('app', ['data' => $data, 'yesorno' => 0]);
-        } else {
+        if (now()->dayOfYear - $yesupdate->dayOfYear != 0) {
             /* 簽到 */
-            
             /* 簽到count+1 */
             $yesterday->increment('count');
             /* 登入獎勵 */
@@ -129,10 +126,15 @@ class ArticlesController extends Controller
             } else {
                 $user->increment('money', 30);
             }
-
             return view('app', ['data' => $data, 'yesorno' => 1]);
+        } else {
+
+            /* 簽過 */
+            return view('app', ['data' => $data, 'yesorno' => 0]);
         }
     }
+
+
 
     public function show($id)
     {

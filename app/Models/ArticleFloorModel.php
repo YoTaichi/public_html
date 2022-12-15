@@ -3,11 +3,11 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\softDeletes;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class ArticleFloorModel extends Model
 {   
-    use softDeletes;
+    use SoftDeletes;
 
     protected $table = 'article_floor';
     protected $fillable = ['title', 'detail', 'floor', 'image' , 'updated_at', 'created_at', 'user_id' ,'article_id'];

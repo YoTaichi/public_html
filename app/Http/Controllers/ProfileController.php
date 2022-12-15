@@ -6,7 +6,6 @@ use App\Http\Requests\ProfileUpdateRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
-use App\Models\BlackListModel;
 
 class ProfileController extends Controller
 {
@@ -18,11 +17,9 @@ class ProfileController extends Controller
      */
     public function edit(Request $request)
     {
-        $blacklists = BlackListModel::where('user_id', Auth()->user()->id)->get();
-        $data = [
-            'blacklists' => $blacklists,
-        ];
-        return view('profile.edit', ['data' => $data, 'user' => $request->user()]);
+        return view('profile.edit', [
+            'user' => $request->user(),
+        ]);
     }
 
     /**
