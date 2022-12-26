@@ -13,13 +13,13 @@
         <div class="col-lg-auto pe-0 text-light">
           <img src="/img/money2.png" alt="" style="height:20px;">
           {{ Auth::user()->money }}
-          <a href="{{ route('buy.money') }}"><img src="/img/plus-circle.svg" alt=""  ></a>
+          <a href="{{ route('buy.money_index') }}"><img src="/img/plus-circle.svg" alt=""></a>
         </div>
         <!-- 鑽 -->
         <div class="col-lg-auto text-light">
           <img src="/img/gem2.png" alt="" style="height:20px;">
           {{ Auth::user()->diamond }}
-          <a href="{{ route('buy.gem') }}"><img src="/img/plus-circle.svg" alt=""  ></a>
+          <a href="{{ route('buy.gem_index') }}"><img src="/img/plus-circle.svg" alt=""></a>
         </div>
       </div>
     </div>
@@ -28,7 +28,7 @@
         <span class="navbar-toggler-icon"></span>
       </button>
     </div>
-    
+
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mb-2 ms-auto mb-lg-0">
         <!-- id -->

@@ -14,12 +14,17 @@
                             <div class="d-flex align-items-center flex-column"><img src="/img/money.png" alt=""></div>
                         </div>
                         <div class="d-flex justify-content-center mt-auto">
-                            <p class="fs-1">100 IN幣</p>
+                            <p class="fs-1 mb-0">100&nbsp;</p>
+                        </div>
+                        <div class="d-flex align-items-center flex-column">
+                            <p class="fs-2 ">IN幣</p>
                         </div>
                         <div class="row mb-2">
-                            <div class="d-grid gap">
-                            </div>
-                            <button type="button " class="btn btn-success px-4"><img src="/img/gem2.png" style="height: 20px;">1</button>
+                            <form class="p-0" action="{{ route('buy.money') }}" method="post">
+                                @csrf
+                                <input name="pay" value="1" type="hidden">
+                                <button type="submit" class="btn btn-success px-4"><img src="/img/gem2.png" style="height: 20px;">1</button>
+                            </form>
                         </div>
                     </div>
                     <div class="col mx-1 mb-2 d-flex align-items-center flex-column" style="background-color: white; height: 250px;">
@@ -27,12 +32,17 @@
                             <div class="d-flex align-items-center flex-column"><img src="/img/money.png" alt=""></div>
                         </div>
                         <div class="d-flex justify-content-center mt-auto">
-                            <p class="fs-1">1000 IN幣</p>
+                            <p class="fs-1 mb-0">1000</p>
+                        </div>
+                        <div class="d-flex align-items-center flex-column">
+                            <p class="fs-2">IN幣</p>
                         </div>
                         <div class="row mb-2">
-                            <div class="d-grid gap">
-                            </div>
-                            <button type="button " class="btn btn-success px-4"><img src="/img/gem2.png" style="height: 20px;">10</button>
+                            <form class="p-0" action="{{ route('buy.money') }}" method="post">
+                                @csrf
+                                <input name="pay" value="10" type="hidden">
+                                <button type="submit" class="btn btn-success px-4"><img src="/img/gem2.png" style="height: 20px;">10</button>
+                            </form>
                         </div>
                     </div>
                     <div class="col mx-1 mb-2 d-flex align-items-center flex-column" style="background-color: white; height: 250px;">
@@ -40,12 +50,17 @@
                             <div class="d-flex align-items-center flex-column"><img src="/img/money.png" alt=""></div>
                         </div>
                         <div class="d-flex justify-content-center mt-auto">
-                            <p class="fs-1">2000 IN幣</p>
+                            <p class="fs-1 mb-0">2000</p>
+                        </div>
+                        <div class="d-flex align-items-center flex-column">
+                            <p class="fs-2">IN幣</p>
                         </div>
                         <div class="row mb-2">
-                            <div class="d-grid gap">
-                            </div>
-                            <button type="button " class="btn btn-success px-4"><img src="/img/gem2.png" style="height: 20px;">50</button>
+                            <form class="p-0" action="{{ route('buy.money') }}" method="post">
+                                @csrf
+                                <input name="pay" value="20" type="hidden">
+                                <button type="submit" class="btn btn-success px-4"><img src="/img/gem2.png" style="height: 20px;">20</button>
+                            </form>
                         </div>
                     </div>
                     <div class="col mx-1 mb-2 d-flex align-items-center flex-column" style="background-color: white; height: 250px;">
@@ -53,12 +68,17 @@
                             <div class="d-flex align-items-center flex-column"><img src="/img/money.png" alt=""></div>
                         </div>
                         <div class="d-flex justify-content-center mt-auto">
-                            <p class="fs-1">3000 IN幣</p>
+                            <p class="fs-1 mb-0">3000</p>
+                        </div>
+                        <div class="d-flex align-items-center flex-column">
+                            <p class="fs-2">IN幣</p>
                         </div>
                         <div class="row mb-2">
-                            <div class="d-grid gap">
-                            </div>
-                            <button type="button " class="btn btn-success px-4"><img src="/img/gem2.png" style="height: 20px;">50</button>
+                            <form class="p-0" action="{{ route('buy.money') }}" method="post">
+                                @csrf
+                                <input name="pay" value="30" type="hidden">
+                                <button type="submit" class="btn btn-success px-4"><img src="/img/gem2.png" style="height: 20px;">30</button>
+                            </form>
                         </div>
                     </div>
                     <div class="col mx-1 mb-2 d-flex align-items-center flex-column" style="background-color: white; height: 250px;">
@@ -66,12 +86,17 @@
                             <div class="d-flex align-items-center flex-column"><img src="/img/money.png" alt=""></div>
                         </div>
                         <div class="d-flex justify-content-center mt-auto">
-                            <p class="fs-1">4000 IN幣</p>
+                            <p class="fs-1 mb-0">4000</p>
+                        </div>
+                        <div class="d-flex align-items-center flex-column">
+                            <p class="fs-2">IN幣</p>
                         </div>
                         <div class="row mb-2">
-                            <div class="d-grid gap">
-                            </div>
-                            <button type="button " class="btn btn-success px-4"><img src="/img/gem2.png" style="height: 20px;">50</button>
+                            <form class="p-0" action="{{ route('buy.money') }}" method="post">
+                                @csrf
+                                <input name="pay" value="40" type="hidden">
+                                <button type="submit" class="btn btn-success px-4"><img src="/img/gem2.png" style="height: 20px;">40</button>
+                            </form>
                         </div>
                     </div>
                     <div class="col mx-1 mb-2 d-flex align-items-center flex-column" style="background-color: white; height: 250px;">
@@ -79,12 +104,17 @@
                             <div class="d-flex align-items-center flex-column"><img src="/img/money.png" alt=""></div>
                         </div>
                         <div class="d-flex justify-content-center mt-auto">
-                            <p class="fs-1">5000 IN幣</p>
+                            <p class="fs-1 mb-0">5000</p>
+                        </div>
+                        <div class="d-flex align-items-center flex-column">
+                            <p class="fs-2">IN幣</p>
                         </div>
                         <div class="row mb-2">
-                            <div class="d-grid gap">
-                            </div>
-                            <button type="button " class="btn btn-success px-4"><img src="/img/gem2.png" style="height: 20px;">80</button>
+                            <form class="p-0" action="{{ route('buy.money') }}" method="post">
+                                @csrf
+                                <input name="pay" value="50" type="hidden">
+                                <button type="submit" class="btn btn-success px-4"><img src="/img/gem2.png" style="height: 20px;">50</button>
+                            </form>
                         </div>
                     </div>
                 </div>

@@ -27,9 +27,19 @@ Route::resource('search', 'App\Http\Controllers\SearchController'::class)->only(
 Route::get('/', function () { 
     return view('welcome');
 });
-Route::get('/buygem', ['App\Http\Controllers\BuyController'::class, 'gem'])->name('buy.gem');
-Route::get('/buygem/get', ['App\Http\Controllers\BuyController'::class, 'get_paid'])->name('buy.get_paid');
-Route::get('/buymoney', ['App\Http\Controllers\BuyController'::class, 'money'])->name('buy.money');
+/* 買鑽 */
+Route::get('/buygem', ['App\Http\Controllers\BuyController'::class, 'gem'])->name('buy.gem_index');
+Route::get('/buygem/pay', ['App\Http\Controllers\BuyController'::class, 'get_paid'])->name('buy.get_paid');
+Route::get('/buygem/get1', ['App\Http\Controllers\BuyController'::class, 'get_paid_one'])->name('buy.get_paid_one');
+Route::get('/buygem/get7', ['App\Http\Controllers\BuyController'::class, 'get_paid_two'])->name('buy.get_paid_two');
+Route::get('/buygem/get12', ['App\Http\Controllers\BuyController'::class, 'get_paid_twelve'])->name('buy.get_paid_twelve');
+Route::get('/buygem/get25', ['App\Http\Controllers\BuyController'::class, 'get_paid_twentyfive'])->name('buy.get_paid_twentyfive');
+Route::get('/buygem/get52', ['App\Http\Controllers\BuyController'::class, 'get_paid_fiftytwo'])->name('buy.get_paid_fiftytwo');
+Route::get('/buygem/get80', ['App\Http\Controllers\BuyController'::class, 'get_paid_eighty'])->name('buy.get_paid_eighty');
+/* 買錢 */
+Route::get('/buymoney', ['App\Http\Controllers\BuyController'::class, 'money'])->name('buy.money_index');
+Route::post('/buymoney/get', ['App\Http\Controllers\BuyController'::class, 'buy_money'])->name('buy.money');
+/* 搜尋 */
 Route::get('/search/{id}', ['App\Http\Controllers\SearchController'::class, 'find'])->name('search.find');
 /* 讚、倒讚 */
 Route::get('/good/{id}', ['App\Http\Controllers\GoodController'::class, 'good'])->name('good');
@@ -39,6 +49,7 @@ Route::get('/sex_all', ['App\Http\Controllers\ArticlesController'::class, 'sex_a
 Route::get('/sex_only', ['App\Http\Controllers\ArticlesController'::class, 'sex_only'])->name('articles.sex_only');
 Route::get('/sex_no', ['App\Http\Controllers\ArticlesController'::class, 'sex_no'])->name('articles.sex_no');
 Route::get('/sign_in', ['App\Http\Controllers\ArticlesController'::class, 'sign_in'])->name('articles.sign_in');
+/* 黑名單 */
 Route::post('/blacklist', ['App\Http\Controllers\BlackListController'::class, 'blacklist'])->name('blacklist');
 Route::post('/blacklist_del/{id}', ['App\Http\Controllers\BlackListController'::class, 'blacklist_del'])->name('blacklist.blacklist_del');
 /* Route::post('/store', ['App\Http\Controllers\ToolBoxController'::class, 'store'])->name('toolbox.store'); */
