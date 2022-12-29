@@ -16,7 +16,7 @@ class GameController extends Controller
 {
     public function index()
     {
-
+        $sex_set = Auth()->user()->sex_set;
         $blacklists = BlackListModel::where('user_id', Auth()->user()->id)->get();
         $yesterday = SignInModel::find(Auth()->user()->id);
         $yesupdate = $yesterday->updated_at;
@@ -25,7 +25,7 @@ class GameController extends Controller
         /* Round */
         /* 結算 */
         if (now()->dayOfYear - $lastround->updated_at->dayOfYear != 0) {
-            $teamAAll = LeftRightGameModel::where('team', 'A')->where('round', $lastround->round)->sum('bet'); 
+            $teamAAll = LeftRightGameModel::where('team', 'A')->where('round', $lastround->round)->sum('bet');
             $teamBAll = LeftRightGameModel::where('team', 'B')->where('round', $lastround->round)->sum('bet');
             $teamAbet = LeftRightGameModel::where('user_id', auth()->user()->id)->where('team', 'A')->where('round', $lastround->round)->get()[0]->bet;
             $teamBbet = LeftRightGameModel::where('user_id', auth()->user()->id)->where('team', 'B')->where('round', $lastround->round)->get()[0]->bet;
@@ -68,6 +68,7 @@ class GameController extends Controller
         $teamBbet = LeftRightGameModel::where('user_id', auth()->user()->id)->where('team', 'B')->where('round', $newround->round)->get();
 
         $data = [
+            'sex_set' => $sex_set,
             'blacklists' => $blacklists,
             'datecount' => $datecount,
             'teamAAll' => $teamAAll,

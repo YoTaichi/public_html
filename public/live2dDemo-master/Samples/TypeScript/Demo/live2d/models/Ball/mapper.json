@@ -1,0 +1,30 @@
+{
+    "parameter": [{
+            "ParamAngleX": "ParamAngleX"
+        },
+        {
+            "ParamAngleY": "ParamAngleY"
+        },
+        {
+            "ParamAngleZ": "ParamAngleZ"
+        },
+        {
+            "ParamEyeBallX": "ParamEyeBallX"
+        },
+        {
+            "ParamEyeBallY": "ParamEyeBallY"
+        },
+        {
+            "ParamBodyAngleY": "ParamBodyAngleY"
+        },
+        {
+            "ParamBodyAngleX": "ParamBodyAngleX"
+        },
+        {
+            "ParamHairFront": "ParamHairFront"
+        }
+    ],
+    "url": [],
+    "center": [1, 0.65],
+    "model_scale": 1
+}

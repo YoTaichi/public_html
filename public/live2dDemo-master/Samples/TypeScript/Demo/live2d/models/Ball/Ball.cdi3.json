@@ -1,0 +1,329 @@
+{
+	"Version": 3,
+	"Parameters": [
+		{
+			"Id": "ParamAngleX",
+			"GroupId": "",
+			"Name": "角度 X"
+		},
+		{
+			"Id": "ParamAngleY",
+			"GroupId": "",
+			"Name": "角度 Y"
+		},
+		{
+			"Id": "ParamAngleZ",
+			"GroupId": "",
+			"Name": "角度 Z"
+		},
+		{
+			"Id": "ParamEyeLOpen",
+			"GroupId": "",
+			"Name": "左目　開閉"
+		},
+		{
+			"Id": "ParamEyeLSmile",
+			"GroupId": "",
+			"Name": "左目　笑顔"
+		},
+		{
+			"Id": "ParamEyeROpen",
+			"GroupId": "",
+			"Name": "右目　開閉"
+		},
+		{
+			"Id": "ParamEyeRSmile",
+			"GroupId": "",
+			"Name": "右目　笑顔"
+		},
+		{
+			"Id": "ParamEyeBallX",
+			"GroupId": "",
+			"Name": "目玉 X"
+		},
+		{
+			"Id": "ParamEyeBallY",
+			"GroupId": "",
+			"Name": "目玉 Y"
+		},
+		{
+			"Id": "ParamBrowLY",
+			"GroupId": "",
+			"Name": "左眉　上下"
+		},
+		{
+			"Id": "ParamBrowRY",
+			"GroupId": "",
+			"Name": "右眉　上下"
+		},
+		{
+			"Id": "ParamBrowLX",
+			"GroupId": "",
+			"Name": "左眉　左右"
+		},
+		{
+			"Id": "ParamBrowRX",
+			"GroupId": "",
+			"Name": "右眉　左右"
+		},
+		{
+			"Id": "ParamBrowLAngle",
+			"GroupId": "",
+			"Name": "左眉　角度"
+		},
+		{
+			"Id": "ParamBrowRAngle",
+			"GroupId": "",
+			"Name": "右眉　角度"
+		},
+		{
+			"Id": "ParamBrowLForm",
+			"GroupId": "",
+			"Name": "左眉　変形"
+		},
+		{
+			"Id": "ParamBrowRForm",
+			"GroupId": "",
+			"Name": "右眉　変形"
+		},
+		{
+			"Id": "ParamMouthForm",
+			"GroupId": "",
+			"Name": "口　変形"
+		},
+		{
+			"Id": "ParamMouthOpenY",
+			"GroupId": "",
+			"Name": "口　開閉"
+		},
+		{
+			"Id": "ParamCheek",
+			"GroupId": "",
+			"Name": "照れ"
+		},
+		{
+			"Id": "ParamBodyAngleX",
+			"GroupId": "",
+			"Name": "体の回転　X"
+		},
+		{
+			"Id": "ParamBodyAngleY",
+			"GroupId": "",
+			"Name": "体の回転　Y"
+		},
+		{
+			"Id": "ParamBreath",
+			"GroupId": "",
+			"Name": "呼吸"
+		},
+		{
+			"Id": "ParamHairFront",
+			"GroupId": "",
+			"Name": "髪揺れ　前"
+		},
+		{
+			"Id": "ParamHairSide",
+			"GroupId": "",
+			"Name": "髪揺れ　横"
+		},
+		{
+			"Id": "ParamHairBack",
+			"GroupId": "",
+			"Name": "髪揺れ　後"
+		},
+		{
+			"Id": "Param",
+			"GroupId": "",
+			"Name": "left_hand"
+		},
+		{
+			"Id": "Param2",
+			"GroupId": "",
+			"Name": "left_arm"
+		},
+		{
+			"Id": "Param3",
+			"GroupId": "",
+			"Name": "right_hand"
+		},
+		{
+			"Id": "Param4",
+			"GroupId": "",
+			"Name": "wing"
+		},
+		{
+			"Id": "Param5",
+			"GroupId": "",
+			"Name": "smile"
+		}
+	],
+	"ParameterGroups": [],
+	"Parts": [
+		{
+			"Id": "Part",
+			"Name": "､Hｪｫ"
+		},
+		{
+			"Id": "Part37",
+			"Name": "･�ﾀ�"
+		},
+		{
+			"Id": "Part38",
+			"Name": "ｯﾍｻH"
+		},
+		{
+			"Id": "Part2",
+			"Name": "head"
+		},
+		{
+			"Id": "Part18",
+			"Name": "ears"
+		},
+		{
+			"Id": "Part23",
+			"Name": "left hand"
+		},
+		{
+			"Id": "Part25",
+			"Name": "tie"
+		},
+		{
+			"Id": "Part24",
+			"Name": "neckline"
+		},
+		{
+			"Id": "Part26",
+			"Name": "body"
+		},
+		{
+			"Id": "Part29",
+			"Name": "left arm"
+		},
+		{
+			"Id": "Part27",
+			"Name": "skirt"
+		},
+		{
+			"Id": "Part28",
+			"Name": "waist"
+		},
+		{
+			"Id": "Part30",
+			"Name": "right hand"
+		},
+		{
+			"Id": "Part31",
+			"Name": "neck"
+		},
+		{
+			"Id": "Part32",
+			"Name": "hair back"
+		},
+		{
+			"Id": "Part33",
+			"Name": "legs"
+		},
+		{
+			"Id": "Part3",
+			"Name": "ribbon"
+		},
+		{
+			"Id": "Part6",
+			"Name": "hair test"
+		},
+		{
+			"Id": "Part8",
+			"Name": "face"
+		},
+		{
+			"Id": "Part34",
+			"Name": "､jｻL"
+		},
+		{
+			"Id": "Part35",
+			"Name": "､pｻL"
+		},
+		{
+			"Id": "Part36",
+			"Name": "ｸ}ｴx"
+		},
+		{
+			"Id": "Part9",
+			"Name": "nose"
+		},
+		{
+			"Id": "Part39",
+			"Name": "mouse"
+		},
+		{
+			"Id": "Part10",
+			"Name": "eyes"
+		},
+		{
+			"Id": "Part4",
+			"Name": "hair left"
+		},
+		{
+			"Id": "Part5",
+			"Name": "hair right"
+		},
+		{
+			"Id": "Part7",
+			"Name": "fringe"
+		},
+		{
+			"Id": "Part40",
+			"Name": "mouse2"
+		},
+		{
+			"Id": "Part41",
+			"Name": "mouse3"
+		},
+		{
+			"Id": "Part42",
+			"Name": "mouse4"
+		},
+		{
+			"Id": "Part11",
+			"Name": "a"
+		},
+		{
+			"Id": "Part12",
+			"Name": "ｲｴﾀY"
+		},
+		{
+			"Id": "Part14",
+			"Name": "ｷ�､�"
+		},
+		{
+			"Id": "Part13",
+			"Name": "ｲｴｽu"
+		},
+		{
+			"Id": "Part15",
+			"Name": "ｬﾜ､�"
+		},
+		{
+			"Id": "Part16",
+			"Name": "ﾀ�､ﾕ"
+		},
+		{
+			"Id": "Part17",
+			"Name": "ｲｴｲｵ"
+		}
+	],
+	"CombinedParameters": [
+		[
+			"ParamAngleX",
+			"ParamAngleY"
+		],
+		[
+			"ParamEyeBallX",
+			"ParamEyeBallY"
+		],
+		[
+			"ParamBodyAngleX",
+			"ParamBodyAngleY"
+		]
+	]
+}

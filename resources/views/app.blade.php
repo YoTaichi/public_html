@@ -46,50 +46,6 @@
 </nav>
 
 
-<!-- 懸浮裘依 -->
-<div class=" btn-group dropstart d-none d-sm-block">
-    <!-- 本體 -->
-    <button type="button" class="btn" data-bs-toggle="dropdown" aria-expanded="false" style="
-            width: 220px;height: auto;position: fixed;
-            bottom: -30rem;right: 0.5rem;box-shadow:none;">
-        <img src="/img/ball2.png" class="img-fluid" alt="...">
-    </button>
-    <ul class="dropdown-menu list-group-flush">
-        <!-- 簽到 -->
-        <li><a class="dropdown-item" id="test">早安</a></li>
-        <li><a class="dropdown-item" href="{{ route('profile.edit') }}">修改資料</a></li>
-        <li>
-            <a class="dropdown-item" id="gg" aria-current="page" data-bs-target="#sign_in" data-bs-toggle="modal">123</a>
-        </li>
-        <!-- 瑟瑟選擇 -->
-        @if($data['sex_set'] === 0)
-        <li><a class="dropdown-item" href="{{ route('articles.sex_all') }}">全部</a></li>
-        <li><a class="dropdown-item" href="{{ route('articles.sex_only')}}">我要瑟瑟</a></li>
-        <li><a class="dropdown-item active" href="{{ route('articles.sex_no') }}">一般</a></li>
-        @elseif($data['sex_set'] === 1)
-        <li><a class="dropdown-item" href="{{ route('articles.sex_all') }}">全部</a></li>
-        <li><a class="dropdown-item active" href="{{ route('articles.sex_only')}}">我要瑟瑟</a></li>
-        <li><a class="dropdown-item" href="{{ route('articles.sex_no') }}">一般</a></li>
-        @else
-        <li><a class="dropdown-item active" href="{{ route('articles.sex_all') }}">全部</a></li>
-        <li><a class="dropdown-item" href="{{ route('articles.sex_only')}}">我要瑟瑟</a></li>
-        <li><a class="dropdown-item" href="{{ route('articles.sex_no') }}">一般</a></li>
-        @endif
-        <!-- 登出 -->
-        <li>
-            <form method="POST" action="{{ route('logout') }}">
-                @csrf
-                <x-dropdown-link :href="route('logout')" onclick="event.preventDefault();
-                                                this.closest('form').submit();">
-                    {{ __('Log Out') }}
-                </x-dropdown-link>
-            </form>
-        </li>
-    </ul>
-
-</div>
-
-
 
 <!-- 登入畫面 -->
 

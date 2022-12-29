@@ -138,7 +138,7 @@ class ArticlesController extends Controller
 
     public function show($id)
     {
-
+        $sex_set = Auth()->user()->sex_set;
         $article = ArticleModel::with(array('message' => function ($query) {
             $query->where('floor', '1')->get();
         }))
@@ -157,6 +157,7 @@ class ArticlesController extends Controller
             'article_tag' => $article_tag,
             'article_floors' => $article_floors,
             'floor' => count($article_floors) + 2,
+            'sex_set' => $sex_set,
             'blacklists' => $blacklists
         ];
 
@@ -166,8 +167,9 @@ class ArticlesController extends Controller
     public function create()
     {
         $blacklists = BlackListModel::where('user_id', Auth()->user()->id)->get();
-
+        $sex_set = Auth()->user()->sex_set;
         $data = [
+            'sex_set' => $sex_set,
             'blacklists' => $blacklists
         ];
         return view('nav.Po', ['data' => $data]);
