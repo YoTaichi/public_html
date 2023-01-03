@@ -29,7 +29,7 @@ class ArticlesController extends Controller
 {
     public function __consrtruct()
     {
-        $this->middleware('auth')->except('index');
+        $this->middleware('auth')->except('login');
     }
 
     // function ball()

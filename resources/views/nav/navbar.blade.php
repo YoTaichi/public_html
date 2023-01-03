@@ -2,7 +2,7 @@
   <div class="container-fluid ">
     <div class="col-auto">
       <!-- LOGO -->
-      <a class="navbar-brand" href="/articles">
+      <a class="navbar-brand" href="/">
         <img src="/img/instand.svg" alt="" class="instand" width="100" height="30">
       </a>
     </div>

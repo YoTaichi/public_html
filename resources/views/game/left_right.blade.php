@@ -9,7 +9,9 @@
         <!--中間切版-->
         <div class="col-lg-9 p-0 ">
             <div style="height:42em; background-color:white;">
-                <div class="col d-flex justify-content-center">Round {{ $data['newround'] }}</div>
+                <div class="col d-flex justify-content-center">
+                    <p class="fs-2 text-secondary">Round {{ $data['newround'] }}</p>
+                </div>
                 <input type="hidden" name="round" value="1">
                 <div class="p-4">
                     <div class="progress" style=" height: 100px;">
@@ -58,14 +60,84 @@
                         @endforeach
                     </div>
                     <div class="row mt-3">
-                    <h1 >
-                        規則
-                    </h1>
-                    <h2 class="ms-2">
-                        大於對方平分對方所有錢
-                    </h2>
+                        <!-- 規則 modal -->
+                        <h1>
+                            規則
+                            <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#rule">
+                                Rule
+                            </button>
+                        </h1>
+                        <!-- Modal -->
+                        <div class="modal fade" id="rule" tabindex="-1" aria-hidden="true">
+                            <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Rule</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <h3 class="ms-2">
+                                            1.勝方按投入比例分得敗方金額
+                                        </h3>
+                                        <h3 class="ms-2">
+                                            2.平手所有參與人得到平手金額
+                                        </h3>
+                                        <h3 class="ms-2">
+                                            3.投入金額無上限
+                                        </h3>
+                                        <h3 class="ms-2">
+                                            4.不限制只能投入一邊
+                                        </h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 歷次紀錄 modal -->
+                        <h1>
+                            歷次紀錄
+                            <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#ever">
+                                Ever
+                            </button>
+                        </h1>
+                        <!-- Modal -->
+                        <div class="modal fade" id="ever" tabindex="-1" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-scrollable">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Rule</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <table class="table">
+                                            <thead>
+                                            </thead>
+                                            <tbody>
+                                                @foreach($data['everRound'] as $everRound)
+                                                @dd($everRound->LRG[0])
+                                                @if($everRound->winner === 'A')
+                                                <tr class="table-info">
+                                                    @elseif($everRound->winner === 'B')
+                                                <tr class="table-danger">
+                                                    @elseif($everRound->teamA_bet != 0)
+                                                <tr class="table-warning">
+                                                    @else
+                                                <tr>
+                                                    @endif
+
+                                                    <th scope="row">Round {{$everRound->round}}</th>
+                                                    <td>TeamA {{ $everRound->teamA_bet }} </td>
+                                                    <td>TeamB {{ $everRound->teamB_bet }}</td>
+
+                                                </tr>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
-                    
                 </div>
             </div>
         </div>

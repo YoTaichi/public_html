@@ -9,7 +9,7 @@ class GoodModel extends Model
 {
     use HasFactory;
     protected $table = 'good';
-    protected $fillable = ['user_id','article_id' ];
+    protected $fillable = ['user_id','article_id','floor' ];
 
     public function user() {
         return $this->belongsTo('App\Models\User');
@@ -22,5 +22,5 @@ class GoodModel extends Model
     public function article_floor() {
         return $this->belongsTo('App\Models\ArticleFloorModel');
     }
-    
+
 }

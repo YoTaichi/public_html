@@ -51,13 +51,13 @@
                 <img class="" src="/img/thumbs-up.svg">
               </a>
               <!-- 讚數 -->
-              <div class="d-flex align-items-end text-black-50 mx-2">{{ $data['article']->good()->count() }}</div>
+              <div class="d-flex align-items-end text-black-50 mx-2">{{ $data['article']->good }}</div>
               <!-- 倒讚按鈕 -->
               <a href="{{ route('bad' , $data['article'] ) }}" style="border:none; background:none;">
                 <img class="" src="/img/thumbs-down.svg">
               </a>
               <!-- 倒讚數 -->
-              <div class="d-flex align-items-end text-black-50 ms-2">{{ $data['article']->bad()->count() }}</div>
+              <div class="d-flex align-items-end text-black-50 ms-2">{{ $data['article']->bad }}</div>
             </div>
             <div class="col-auto d-flex align-items-end">
               <h6>
@@ -73,7 +73,6 @@
 
         <!-- 其他樓 -->
         @foreach($data['article_floors'] as $article_floor)
-
         <div class="col mt-4 mx-0 px-4 pt-3  rounded-top " id="floor" style="background-color:white;">
           <!-- 頭像+編輯+F -->
           <div class="row mb-2">
@@ -99,17 +98,17 @@
           <div class="row">
             <div class="col mx-0 d-flex align-items-center pb-2">
               <!-- 讚按鈕 -->
-              <a href="{{ route('good', $data['article'] ) }}" style="border:none; background:none;">
+              <a href="{{ route('good_floor', $article_floor ) }}" style="border:none; background:none;">
                 <img class="" src="/img/thumbs-up.svg">
               </a>
               <!-- 讚數 -->
-              <div class="d-flex align-items-end text-black-50 mx-2">{{ $article_floor->good()->count() }}</div>
+              <div class="d-flex align-items-end text-black-50 mx-2">{{ $article_floor->good }}</div>
               <!-- 倒讚按鈕 -->
-              <a href="{{ route('bad' , $data['article'] ) }}" style="border:none; background:none;">
+              <a href="{{ route('bad_floor' , $article_floor ) }}" style="border:none; background:none;">
                 <img class="" src="/img/thumbs-down.svg">
               </a>
               <!-- 倒讚數 -->
-              <div class="d-flex align-items-end text-black-50 ms-2">{{ $article_floor->bad()->count() }}</div>
+              <div class="d-flex align-items-end text-black-50 ms-2">{{ $article_floor->bad }}</div>
             </div>
             <div class="col-auto d-flex align-items-end">
               <h6>

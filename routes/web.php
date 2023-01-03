@@ -20,13 +20,11 @@ Route::resource('articles', 'App\Http\Controllers\ArticlesController'::class);
 Route::resource('article_floor', 'App\Http\Controllers\ArticleFloorController'::class);
 Route::resource('game', 'App\Http\Controllers\GameController'::class);
 Route::resource('ball', 'App\Http\Controllers\BallController'::class);
-Route::resource('register', 'App\Http\Controllers\RegisterController'::class);
+Route::resource('register', 'App\Http\Controllers\RegisteredUserController'::class);
 Route::resource('message', 'App\Http\Controllers\MessageController'::class);
 Route::resource('blacklist', 'App\Http\Controllers\BlackListController'::class);
 Route::resource('search', 'App\Http\Controllers\SearchController'::class)->only('store');
-Route::get('/', function () { 
-    return view('welcome');
-});
+Route::middleware('auth')->get('/',  ['App\Http\Controllers\ArticlesController'::class, 'index']);
 /* 買鑽 */
 Route::get('/buygem', ['App\Http\Controllers\BuyController'::class, 'gem'])->name('buy.gem_index');
 Route::get('/buygem/pay', ['App\Http\Controllers\BuyController'::class, 'get_paid'])->name('buy.get_paid');
@@ -43,7 +41,9 @@ Route::post('/buymoney/get', ['App\Http\Controllers\BuyController'::class, 'buy_
 Route::get('/search/{id}', ['App\Http\Controllers\SearchController'::class, 'find'])->name('search.find');
 /* 讚、倒讚 */
 Route::get('/good/{id}', ['App\Http\Controllers\GoodController'::class, 'good'])->name('good');
+Route::get('/good_floor/{id}', ['App\Http\Controllers\GoodController'::class, 'good_floor'])->name('good_floor');
 Route::get('/bad/{id}', ['App\Http\Controllers\BadController'::class, 'bad'])->name('bad');
+Route::get('/bad_floor/{id}', ['App\Http\Controllers\BadController'::class, 'bad_floor'])->name('bad_floor');
 /* 文章顯示 */
 Route::get('/sex_all', ['App\Http\Controllers\ArticlesController'::class, 'sex_all'])->name('articles.sex_all');
 Route::get('/sex_only', ['App\Http\Controllers\ArticlesController'::class, 'sex_only'])->name('articles.sex_only');
@@ -57,7 +57,7 @@ Route::post('/blacklist_del/{id}', ['App\Http\Controllers\BlackListController'::
 
 Route::prefix('admin')->middleware('auth')->group(function ()
 {
-   // ...前略 
+   // ...前略
    Route::prefix('summernote')->group(function(){
        Route::post('/store','ToolBoxController@summernoteStore');
        Route::post('/delete','ToolBoxController@summernoteDelete');
